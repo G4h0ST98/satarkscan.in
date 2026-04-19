@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake UPI Apps — How Scammers Clone PhonePe & GPay — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Scammers create pixel-perfect clones of PhonePe, GPay, and BHIM to show fake payment success screens. Learn how to spot a fake UPI payment.">
+  <link rel="canonical" href="https://satarkscan.in/articles/fake-upi-app.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/fake-upi-app.html">
+  <meta property="og:title" content="Fake UPI Apps — How Scammers Clone PhonePe & GPay">
+  <meta property="og:description" content="The payment success screen looked real. The money never arrived. Learn how fake UPI apps fool merchants every day.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(239,68,68,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(239,68,68,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--danger), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    /* Side-by-side comparison: real vs fake */
+    .comparison { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
+    .mock-screen { width: 200px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .mock-screen.real { border: 2px solid rgba(16,185,129,0.4); }
+    .mock-screen.fake { border: 2px solid rgba(239,68,68,0.4); }
+    .mock-header { padding: 0.8rem 1rem 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .mock-header.green-bg { background: #1B5E20; }
+    .mock-header.red-bg { background: #B71C1C; }
+    .mock-header-icon { font-size: 1rem; }
+    .mock-header-title { font-size: 0.75rem; font-weight: 700; color: #fff; font-family: var(--font-display); }
+    .mock-header-label { font-size: 0.55rem; color: rgba(255,255,255,0.7); font-family: var(--font-mono); margin-left: auto; }
+    .mock-body { background: #fff; padding: 1.2rem 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+    .mock-tick { font-size: 2.5rem; }
+    .mock-paid { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; }
+    .mock-paid.green { color: #1B5E20; }
+    .mock-paid.red-text { color: #B71C1C; }
+    .mock-amount { font-family: var(--font-mono); font-size: 0.9rem; color: #333; font-weight: 700; }
+    .mock-txn { font-size: 0.6rem; color: #888; font-family: var(--font-mono); }
+    .mock-txn.fake-txn { color: #B71C1C; font-weight: 700; }
+    .mock-label-pill { font-size: 0.6rem; font-weight: 700; font-family: var(--font-mono); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; }
+    .mock-label-pill.real-pill { background: rgba(16,185,129,0.15); color: #1B5E20; border: 1px solid rgba(16,185,129,0.4); }
+    .mock-label-pill.fake-pill { background: rgba(239,68,68,0.15); color: #B71C1C; border: 1px solid rgba(239,68,68,0.4); animation: approvePulse 2s infinite; }
+    @keyframes approvePulse { 0%,100%{box-shadow:0 0 6px rgba(239,68,68,0.3)} 50%{box-shadow:0 0 14px rgba(239,68,68,0.7)} }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+    .big-rule { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.02)); border: 2px solid rgba(239,68,68,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; box-shadow: 0 10px 30px rgba(239,68,68,0.1); }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; animation: shake 2.5s infinite; }
+    @keyframes shake { 0%,90%,100%{transform:rotate(0)} 92%{transform:rotate(-10deg)} 94%{transform:rotate(10deg)} 96%{transform:rotate(-10deg)} 98%{transform:rotate(10deg)} }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: var(--danger); font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
+    @media(max-width:768px){ .scenario-box{padding:2rem 1.5rem;} .mock-screen{width:160px;} }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">App Fraud Alert</div>
+      <h1>Fake UPI Apps — How Scammers Clone PhonePe & GPay</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 5 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ Real vs Fake payment screen</div>
+    <div class="comparison">
+      <div class="mock-screen real">
+        <div class="mock-header green-bg">
+          <span class="mock-header-icon">💚</span>
+          <span class="mock-header-title">PhonePe</span>
+          <span class="mock-header-label">GENUINE</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-tick">✅</div>
+          <div class="mock-paid green">Payment Successful</div>
+          <div class="mock-amount">₹1,200</div>
+          <div class="mock-txn">TXN: 4239871560234</div>
+          <div class="mock-label-pill real-pill">BANK CONFIRMED</div>
+        </div>
+      </div>
+      <div class="mock-screen fake">
+        <div class="mock-header red-bg">
+          <span class="mock-header-icon">⚠️</span>
+          <span class="mock-header-title">Ph0nePe</span>
+          <span class="mock-header-label">FAKE APP</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-tick">✅</div>
+          <div class="mock-paid red-text">Payment Successful</div>
+          <div class="mock-amount">₹1,200</div>
+          <div class="mock-txn fake-txn">No actual transaction</div>
+          <div class="mock-label-pill fake-pill">SCREENSHOT ONLY</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; color:var(--text2); font-size:0.95rem; margin-top:1.5rem; font-family:var(--font-mono);">The screens look identical. Only your bank SMS confirms if the money actually arrived.</p>
+  </div>
+
+  <div class="article-body">
+    <h2 class="reveal">The real scenario</h2>
+    <div class="scenario-narrative reveal">
+      A customer walks into a small mobile accessories shop and picks up a ₹1,200 phone case. They open their phone to pay. The app looks exactly like PhonePe — same purple logo, same green tick, same "Payment Successful" screen. They flip the phone to show the shopkeeper. The shopkeeper sees ₹1,200 and the green tick. They hand over the item.
+      <br><br>
+      The customer walks out. No SMS arrives. The shopkeeper checks their UPI balance — nothing. The "PhonePe" app on the customer's phone was a fake app called "Ph0nePe" downloaded from a random APK website. It shows whatever success screen the user sets, without sending a single rupee.
+    </div>
+
+    <h2 class="reveal">How do these fake apps work?</h2>
+    <div class="reveal">
+      <p>Fake UPI apps are not sophisticated hacks — they are simple screen simulators. They mimic the exact UI of PhonePe, Google Pay, Paytm, or BHIM. When a user "pays," the app just displays an animated success screen with a custom amount and a fake transaction ID. No UPI network is contacted. No money moves.</p>
+      <p>These APKs are freely available on Telegram groups and shady APK download sites. Scammers typically use them at busy markets, small roadside vendors, or at night when shopkeepers are tired and rushing. The target is always the merchant — the person checking the screen.</p>
+    </div>
+
+    <div class="big-rule reveal">
+      <span class="emoji">🛑</span>
+      <p>A green tick on a screen means nothing.</p>
+      <div class="sub">Your bank SMS or UPI app notification is the only proof of payment.</div>
+    </div>
+
+    <h2 class="reveal">🚩 Red flags to watch for</h2>
+    <div class="red-flags reveal">
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The app name or logo has a tiny difference — "Ph0nePe" instead of "PhonePe", off-colour icons, or slightly wrong fonts. Glance at the top of their screen.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The customer flips their phone quickly to show you the success screen, then immediately pulls it back. They do not let you look for more than 2–3 seconds.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The transaction ID looks too short, too long, or contains unusual characters. Real UPI transaction IDs follow a specific format.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>You receive no UPI sound notification or SMS. Real payments trigger an instant credit alert on your registered mobile number.</div>
+      </div>
+    </div>
+
+    <h2 class="reveal">✅ How to stay safe</h2>
+    <div class="green-tips reveal">
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Wait for your own SMS.</strong> Never hand over goods until you receive a credit confirmation on your bank-registered number. This takes under 5 seconds for a real payment.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Check your UPI app directly.</strong> Open your PhonePe or GPay and check transaction history. A genuine payment appears there instantly.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Use a UPI sound box</strong> if you're a merchant. Devices like PhonePe Sound Box or Paytm Soundbox announce every credit aloud — impossible to fake.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Do not trust screenshots.</strong> A screenshot of a payment success screen is worth nothing. It can be edited in 10 seconds on any phone.</div>
+      </div>
+    </div>
+
+    <div class="share-section reveal">
+      <p>Help others stay safe — share this intelligence</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareArticle('whatsapp')">Share on WhatsApp</button>
+        <button class="share-btn" onclick="shareArticle('twitter')">Share on X</button>
+        <button class="share-btn" onclick="shareArticle('copy')">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="back-cta reveal">
+      <a href="../cyber-jagrut.html">← Back to Threat Hub</a>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+try {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+} catch(err) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }
+function shareArticle(platform){
+  const url = window.location.href;
+  const text = 'Read this: Fake UPI Apps — how scammers clone PhonePe & GPay to cheat merchants | SatarkScan';
+  if(platform === 'whatsapp') { window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`); }
+  else if(platform === 'twitter') { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`); }
+  else { navigator.clipboard.writeText(url); const btn = event.target; const orig = btn.innerText; btn.innerText = 'Copied!'; setTimeout(()=>{ btn.innerText = orig; }, 2000); }
+}
+</script>
+</body>
+</html>

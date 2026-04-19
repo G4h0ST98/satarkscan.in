@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Centers the 1200x630 canvas and matches the dark background perfectly */
+  html {
+    background: #060612; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+}
+
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #060612; font-family: 'Outfit', sans-serif; position: relative;
+  }
+
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(123,58,236,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(123,58,236,0.06) 1px, transparent 1px); background-size: 60px 60px; }
+  .blob1 { position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(74,20,140,0.3), transparent 65%); top: -250px; right: 50px; border-radius: 50%; filter: blur(20px); }
+  .blob2 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 65%); bottom: -150px; left: -80px; border-radius: 50%; filter: blur(20px); }
+  .blob3 { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 65%); top: 80px; right: 180px; border-radius: 50%; filter: blur(30px); }
+
+  /* Main layout — left text, right card */
+  .container {
+    position: relative; z-index: 10;
+    width: 100%; height: 100%;
+    display: flex; align-items: center;
+    padding: 0 80px 50px 80px;
+    gap: 50px;
+  }
+
+  /* LEFT */
+  .left { flex: 1; display: flex; flex-direction: column; gap: 26px; }
+
+  .logo-row { display: flex; align-items: center; gap: 14px; }
+  .logo-icon { width: 54px; height: 54px; background: #4A148C; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(123,58,236,0.6); flex-shrink: 0; }
+  .logo-name { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+
+  .headline { font-size: 4rem; font-weight: 900; line-height: 1.0; letter-spacing: -0.04em; color: #fff; }
+  .headline em { font-style: normal; background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, #22D3EE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .sub { font-size: 1.08rem; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 420px; }
+
+  .pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; padding: 7px 16px; border-radius: 50px; letter-spacing: 0.04em; }
+  .p-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.28);  color: #10B981; }
+  .p-purple { background: rgba(123,58,236,0.1);  border: 1px solid rgba(123,58,236,0.28);  color: #a78bfa; }
+  .p-cyan   { background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.25);  color: #22D3EE; }
+
+  /* RIGHT — risk result card */
+  .right { 
+    width: 370px; 
+    flex-shrink: 0; 
+    position: relative; 
+    margin-right: -30px; /* Nudges the box to the right */
+  }
+
+  .card-glow { position: absolute; width: 380px; height: 380px; background: radial-gradient(circle, rgba(198,40,40,0.18), transparent 70%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); filter: blur(30px); z-index: 0; }
+
+  .card {
+    position: relative; z-index: 1;
+    background: #f5f3f8;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  /* Red header */
+  .card-header {
+    background: #C62828;
+    padding: 16px 20px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .card-header::after { content: ''; position: absolute; top: 0; left: -60%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); animation: shine 3s ease-in-out infinite; }
+  @keyframes shine { 0% { left: -60%; } 100% { left: 120%; } }
+  .header-left { display: flex; flex-direction: column; gap: 2px; }
+  .header-risk { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: 0.02em; }
+  .header-conf { font-size: 0.75rem; color: rgba(255,255,255,0.85); }
+  .header-score { font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+
+  /* Card body */
+  .card-body { padding: 16px 20px; }
+
+  .score-lbl { font-size: 0.8rem; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; }
+  .bar-outer { width: 100%; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 4px; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, #4CAF50 0%, #FFC107 50%, #F44336 100%); width: 100%; border-radius: 4px; position: relative; }
+  .bar-fill::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; background: #fff; border: 3px solid #D32F2F; border-radius: 50%; box-shadow: 0 0 8px rgba(211,47,47,0.5); }
+  .bar-labels { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 14px; }
+  .bar-labels span:nth-child(1) { color: #2E7D32; font-weight: 600; }
+  .bar-labels span:nth-child(2) { color: #E65100; font-weight: 600; }
+  .bar-labels span:nth-child(3) { color: #D32F2F; font-weight: 600; }
+
+  .divider { height: 1px; background: #e0dce8; margin: 12px 0; }
+
+  .reason { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; font-size: 0.8rem; color: #333; line-height: 1.3; }
+  .rdot { color: #D32F2F; font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+
+  .flagged { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #D32F2F; font-weight: 700; margin-top: 10px; }
+
+  .divider2 { height: 1px; background: #e0dce8; margin: 10px 0; }
+
+  .info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .info-lbl { font-size: 0.72rem; color: #999; }
+  .info-val { font-size: 0.75rem; color: #1a1a2e; font-weight: 700; }
+  .info-val-red { font-size: 0.75rem; color: #D32F2F; font-weight: 700; }
+
+  /* Quote footer bar */
+  .footer-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: linear-gradient(transparent, rgba(4,2,14,0.88));
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 14px;
+    z-index: 20;
+  }
+  .footer-txt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.05em;
+    text-align: center;
+    max-width: 900px;
+    font-style: italic;
+  }
+  .footer-brand {
+    color: rgba(167,139,250,0.7);
+    font-style: normal;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="blob3"></div>
+
+  <div class="container">
+    <div class="left">
+      <div class="logo-row">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+            <defs><clipPath id="sh"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs>
+            <path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/>
+            <g clip-path="url(#sh)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g>
+          </svg>
+        </div>
+        <span class="logo-name">SatarkScan</span>
+      </div>
+
+      <div class="headline">Scan <em>Before</em><br>You Pay.</div>
+
+      <p class="sub">India's free UPI QR fraud detector. 13 fraud signals checked instantly — 100% on your device, no internet needed.</p>
+
+      <div class="pills">
+        <span class="pill p-green">100% Offline</span>
+        <span class="pill p-purple">Zero Ads</span>
+        <span class="pill p-cyan">23 Languages</span>
+        <span class="pill p-green">Free Forever</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card-glow"></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="header-left">
+            <div class="header-risk">⚠ HIGH RISK</div>
+            <div class="header-conf">Confidence: 88%</div>
+          </div>
+          <div class="header-score">100</div>
+        </div>
+        <div class="card-body">
+          <div class="score-lbl">Risk Score: 100 / 100</div>
+          <div class="bar-outer"><div class="bar-fill"></div></div>
+          <div class="bar-labels"><span>LOW RISK</span><span>MEDIUM RISK</span><span>HIGH RISK</span></div>
+          <div class="divider"></div>
+          <div class="reason"><span class="rdot">●</span>Pre-filled amount present</div>
+          <div class="reason"><span class="rdot">●</span>Very high amount (₹50,000+)</div>
+          <div class="reason"><span class="rdot">●</span>Support-style UPI ID</div>
+          <div class="reason"><span class="rdot">●</span>Collect request detected</div>
+          <div class="flagged">⚠ Flagged on this device</div>
+          <div class="divider2"></div>
+          <div class="info-row"><span class="info-lbl">UPI ID</span><span class="info-val">refund.helpdesk9@ybl</span></div>
+          <div class="info-row"><span class="info-lbl">Name</span><span class="info-val">Support Team</span></div>
+          <div class="info-row"><span class="info-lbl">Amount</span><span class="info-val-red">₹50,000.00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span class="footer-txt">
+      "It takes just one overlooked QR code to lose everything." &nbsp;—&nbsp; <span class="footer-brand">Be Alert. Be Safe. &nbsp;·&nbsp; satarkscan.in</span>
+    </span>
+  </div>
+</body>
+</html>

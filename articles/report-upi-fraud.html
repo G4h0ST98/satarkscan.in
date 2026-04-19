@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Report UPI Fraud in India — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Lost money to a UPI scam? Here is exactly what to do in the first 24 hours — Cybercrime portal, bank freeze, and NPCI complaint explained step by step.">
+  <link rel="canonical" href="https://satarkscan.in/articles/report-upi-fraud.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/report-upi-fraud.html">
+  <meta property="og:title" content="How to Report UPI Fraud in India">
+  <meta property="og:description" content="Lost money to a UPI scam? Act within the first hour. Here is your complete step-by-step guide to reporting and recovering funds.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="manifest" href="../site.webmanifest" />
+
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(123,58,236,0.12), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--cyan); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(34,211,238,0.08); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(34,211,238,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(34,211,238,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--cyan); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    /* Timeline steps */
+    .timeline { display: flex; flex-direction: column; gap: 0; max-width: 480px; margin: 0 auto; }
+    .tl-step { display: flex; gap: 1rem; align-items: flex-start; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; }
+    .tl-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+    .tl-num.urgent { background: rgba(239,68,68,0.2); border: 2px solid var(--danger); color: var(--danger); }
+    .tl-num.normal { background: rgba(34,211,238,0.1); border: 2px solid var(--cyan); color: var(--cyan); }
+    .tl-line { width: 2px; flex: 1; min-height: 24px; background: rgba(255,255,255,0.08); margin: 4px 0; }
+    .tl-content { padding-bottom: 1.5rem; flex: 1; }
+    .tl-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.3rem; }
+    .tl-desc { font-family: var(--font-body); font-size: 0.88rem; color: var(--text2); line-height: 1.6; }
+    .tl-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; margin-bottom: 0.4rem; }
+    .tl-badge.red { background: rgba(239,68,68,0.15); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+    .tl-badge.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+    .big-rule { background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(34,211,238,0.01)); border: 2px solid rgba(34,211,238,0.25); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: var(--cyan); font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+
+    /* Info table */
+    .contact-table { width: 100%; border-collapse: collapse; margin: 2rem 0; border-radius: 12px; overflow: hidden; }
+    .contact-table th { background: rgba(34,211,238,0.1); color: var(--cyan); font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid rgba(34,211,238,0.15); }
+    .contact-table td { padding: 0.9rem 1rem; font-size: 0.95rem; color: var(--text2); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; line-height: 1.5; }
+    .contact-table tr:last-child td { border-bottom: none; }
+    .contact-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .contact-table .highlight { color: var(--text); font-weight: 600; }
+
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card.neutral { background: rgba(34,211,238,0.05); border: 1px solid rgba(34,211,238,0.15); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
+    @media(max-width:768px){ .scenario-box{padding:2rem 1.5rem;} .contact-table{font-size:0.85rem;} }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Action Guide</div>
+      <h1>How to Report UPI Fraud in India</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 6 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⏱ Your action timeline after a UPI scam</div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num urgent">1</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-badge red">Within 1 hour</div>
+          <div class="tl-title">Call your bank — request a freeze</div>
+          <div class="tl-desc">Call the helpline on the back of your debit card. Ask them to freeze the transaction or raise a fraud dispute. Speed matters — money can still be in transit.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num urgent">2</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-badge red">Within 24 hours</div>
+          <div class="tl-title">File on Cybercrime portal — 1930</div>
+          <div class="tl-desc">Call the national cybercrime helpline 1930 or file at cybercrime.gov.in. This creates an official record and can trigger a hold on the fraudster's account.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num normal">3</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-badge cyan">Within 3 days</div>
+          <div class="tl-title">Raise a complaint with your UPI app</div>
+          <div class="tl-desc">Use the dispute/complaint section inside PhonePe, GPay, or Paytm. Attach your cybercrime complaint number to strengthen the case.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num normal">4</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-badge cyan">Within 7 days</div>
+          <div class="tl-title">File an NPCI complaint if unresolved</div>
+          <div class="tl-desc">If your bank or UPI app has not responded, escalate to NPCI at npci.org.in/contact. NPCI regulates all UPI apps and can intervene.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <h2 class="reveal">Why the first hour is critical</h2>
+    <div class="scenario-narrative reveal">
+      When you are scammed on UPI, the money does not vanish immediately. It moves to a "mule account" — an account controlled by the scammer, often someone hired to receive and forward funds. If you report fast enough, banks can place a technical hold on that account before the money is withdrawn or forwarded further. Once it moves again, recovery becomes nearly impossible.
+    </div>
+
+    <div class="big-rule reveal">
+      <span class="emoji">📞</span>
+      <p>National Cybercrime Helpline: 1930</p>
+      <div class="sub">Available 24×7 · Free to call · Works from any phone in India</div>
+    </div>
+
+    <h2 class="reveal">All reporting channels at a glance</h2>
+    <div class="reveal">
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Where</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Helpline 1930</td>
+            <td>Call from any mobile</td>
+            <td>Immediate freeze request, first report</td>
+          </tr>
+          <tr>
+            <td class="highlight">cybercrime.gov.in</td>
+            <td>Website / portal</td>
+            <td>Official written complaint with evidence</td>
+          </tr>
+          <tr>
+            <td class="highlight">Your bank helpline</td>
+            <td>Number on debit card back</td>
+            <td>Transaction dispute and account freeze</td>
+          </tr>
+          <tr>
+            <td class="highlight">UPI app support</td>
+            <td>Inside PhonePe / GPay / Paytm</td>
+            <td>Dispute the specific transaction</td>
+          </tr>
+          <tr>
+            <td class="highlight">NPCI complaint</td>
+            <td>npci.org.in/contact</td>
+            <td>Escalation if bank does not resolve in 7 days</td>
+          </tr>
+          <tr>
+            <td class="highlight">Local police / FIR</td>
+            <td>Nearest cyber crime cell</td>
+            <td>Required for large amounts, legal proceedings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="reveal">What to collect before you report</h2>
+    <div class="green-tips reveal">
+      <div class="info-card neutral">
+        <span class="icon">📋</span>
+        <div><strong>Transaction ID (UTR number)</strong> — visible in your UPI app transaction history and the debit SMS from your bank.</div>
+      </div>
+      <div class="info-card neutral">
+        <span class="icon">📋</span>
+        <div><strong>Scammer's VPA / UPI ID</strong> — the address you sent money to (e.g. scammer@okhdfc). Screenshot it from the transaction details.</div>
+      </div>
+      <div class="info-card neutral">
+        <span class="icon">📋</span>
+        <div><strong>Scammer's phone number</strong> — if they called you, save the number before they block you. It is evidence.</div>
+      </div>
+      <div class="info-card neutral">
+        <span class="icon">📋</span>
+        <div><strong>Screenshots of all conversations</strong> — WhatsApp chats, SMS, any messages. Do not delete anything.</div>
+      </div>
+      <div class="info-card neutral">
+        <span class="icon">📋</span>
+        <div><strong>Exact time and date</strong> — from your bank SMS. This helps the bank locate the transaction quickly in their system.</div>
+      </div>
+    </div>
+
+    <h2 class="reveal">🚩 Common mistakes that hurt recovery</h2>
+    <div class="red-flags reveal">
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>Waiting more than 24 hours before reporting. Most recovered funds come from reports made within the first 2–3 hours.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>Deleting chats or call logs "to move on." These are evidence. Keep everything until the case closes.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>Calling a "recovery agent" who promises to get your money back for a fee. This is a second scam targeting people who were already defrauded.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>Only filing with one channel. File everywhere — bank, 1930, cybercrime portal, UPI app. More records mean more pressure.</div>
+      </div>
+    </div>
+
+    <div class="share-section reveal">
+      <p>Help others stay safe — share this intelligence</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareArticle('whatsapp')">Share on WhatsApp</button>
+        <button class="share-btn" onclick="shareArticle('twitter')">Share on X</button>
+        <button class="share-btn" onclick="shareArticle('copy')">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="back-cta reveal">
+      <a href="../cyber-jagrut.html">← Back to Threat Hub</a>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+try {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+} catch(err) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }
+function shareArticle(platform){
+  const url = window.location.href;
+  const text = 'Read this: How to Report UPI Fraud in India — what to do in the first hour | SatarkScan';
+  if(platform === 'whatsapp') { window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`); }
+  else if(platform === 'twitter') { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`); }
+  else { navigator.clipboard.writeText(url); const btn = event.target; const orig = btn.innerText; btn.innerText = 'Copied!'; setTimeout(()=>{ btn.innerText = orig; }, 2000); }
+}
+</script>
+</body>
+</html>

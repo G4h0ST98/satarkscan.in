@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Screen Share Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Fake bank helpline agents ask you to install AnyDesk or TeamViewer, then drain your account silently. Learn how the screen share scam works.">
+  <link rel="canonical" href="https://satarkscan.in/articles/screen-share-scam.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/screen-share-scam.html">
+  <meta property="og:title" content="The Screen Share Scam — Cyber Jagrut">
+  <meta property="og:description" content="They say they're from your bank. They ask for remote access. Then they clean out your account.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="manifest" href="../site.webmanifest" />
+
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(239,68,68,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(239,68,68,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--danger), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    /* Phone screen mock with remote viewer overlay */
+    .screen-share-scene { display: flex; justify-content: center; margin: 1.5rem 0; }
+    .fake-phone {
+      width: 260px;
+      background: #0a0a16;
+      border: 2px solid rgba(239,68,68,0.4);
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(239,68,68,0.1);
+      position: relative;
+    }
+    .phone-topbar { background: #1a0a0a; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(239,68,68,0.2); }
+    .phone-topbar-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 6px rgba(239,68,68,0.8); animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .phone-topbar span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--danger); font-weight: 700; }
+    .phone-body { padding: 1.2rem 1rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .phone-app-icon { display: flex; align-items: center; gap: 0.7rem; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 0.7rem; border: 1px solid rgba(255,255,255,0.08); }
+    .app-icon-box { width: 36px; height: 36px; border-radius: 8px; background: #1565C0; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .app-icon-box.anydesk { background: #C62828; }
+    .app-info { flex: 1; }
+    .app-name { font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; color: var(--text); }
+    .app-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text2); }
+    .install-btn { background: var(--danger); color: #fff; border: none; border-radius: 6px; padding: 0.35rem 0.7rem; font-size: 0.65rem; font-weight: 700; cursor: pointer; font-family: var(--font-body); animation: approvePulse 2s infinite; }
+    @keyframes approvePulse { 0%,100%{box-shadow:0 0 8px rgba(239,68,68,0.4)} 50%{box-shadow:0 0 18px rgba(239,68,68,0.8)} }
+    .phone-caption { font-family: var(--font-mono); font-size: 0.65rem; color: #888; text-align: center; padding: 0.7rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+    .big-rule { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.02)); border: 2px solid rgba(239,68,68,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; box-shadow: 0 10px 30px rgba(239,68,68,0.1); }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; animation: shake 2.5s infinite; }
+    @keyframes shake { 0%,90%,100%{transform:rotate(0)} 92%{transform:rotate(-10deg)} 94%{transform:rotate(10deg)} 96%{transform:rotate(-10deg)} 98%{transform:rotate(10deg)} }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: var(--danger); font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
+    @media(max-width:768px){ .scenario-box{padding:2rem 1.5rem;} }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Remote Access Scam</div>
+      <h1>The Screen Share Scam</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 5 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ How the scam works</div>
+    <div class="screen-share-scene">
+      <div class="fake-phone">
+        <div class="phone-topbar">
+          <div class="phone-topbar-dot"></div>
+          <span>REMOTE SESSION ACTIVE</span>
+        </div>
+        <div class="phone-body">
+          <div class="phone-app-icon">
+            <div class="app-icon-box anydesk">📡</div>
+            <div class="app-info">
+              <div class="app-name">AnyDesk</div>
+              <div class="app-sub">Remote desktop</div>
+            </div>
+            <button class="install-btn">OPEN</button>
+          </div>
+          <div class="phone-app-icon">
+            <div class="app-icon-box">🏦</div>
+            <div class="app-info">
+              <div class="app-name">Net Banking</div>
+              <div class="app-sub">Session visible to scammer</div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-caption">⚠ Scammer watching your screen live</div>
+      </div>
+    </div>
+    <p style="text-align:center; color:var(--text2); font-size:0.95rem; margin-top:1.5rem; font-family:var(--font-mono);">Once you share your screen, everything on your phone — OTPs, PINs, balances — is visible to the scammer.</p>
+  </div>
+
+  <div class="article-body">
+    <h2 class="reveal">The real scenario</h2>
+    <div class="scenario-narrative reveal">
+      You get a call from someone claiming to be from SBI customer care. Your card was "blocked due to suspicious activity." They sound professional. They have your name. They say to fix it, they need to "verify your device remotely." They ask you to install AnyDesk or TeamViewer from the Play Store — "it's a standard bank procedure."
+      <br><br>
+      You install it. You share the 9-digit code. In the next 10 minutes, the scammer opens your banking app on your screen, initiates a transfer, reads your OTP as it arrives on your own phone, and confirms it. You watch helplessly as ₹80,000 leaves your account.
+    </div>
+
+    <h2 class="reveal">Why this scam works so well</h2>
+    <div class="reveal">
+      <p>Remote access apps like AnyDesk, TeamViewer, and QuickSupport are real, legitimate software used by IT support teams globally. This gives the scam instant credibility. The scammer doesn't need your password or OTP directly — they just watch your screen and read it themselves as it appears.</p>
+      <p>The social engineering is also precise. They call during working hours. They have basic details about you (name, city, sometimes even partial account numbers) purchased from data brokers or leaked databases. They create a sense of emergency — "your account will be permanently blocked in 2 hours."</p>
+    </div>
+
+    <div class="big-rule reveal">
+      <span class="emoji">🛑</span>
+      <p>No real bank will ever ask you to install any app.</p>
+      <div class="sub">Banks call you to verify identity. They never need to see your screen.</div>
+    </div>
+
+    <h2 class="reveal">🚩 Red flags to watch for</h2>
+    <div class="red-flags reveal">
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The caller asks you to download any app — AnyDesk, TeamViewer, QuickSupport, mAssist, or anything else — as part of "bank verification."</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>They ask for the "session code" or "9-digit ID" shown in the app. This is the key that gives them full control of your phone.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>They stay on call with you throughout, guiding each step. Real bank support ends the call after basic verification.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The call is from a mobile number (9xxxxxxxx), not a bank's official toll-free number (1800-xxx-xxxx).</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>They ask you to keep the session "private" and not tell family members. Isolation is a core part of every social engineering scam.</div>
+      </div>
+    </div>
+
+    <h2 class="reveal">✅ How to stay safe</h2>
+    <div class="green-tips reveal">
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Hang up immediately</strong> if anyone asks you to install a remote access app. Call your bank back on the number printed on your debit card.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Never share a session code</strong> from AnyDesk or TeamViewer with anyone who called you. These codes hand over your entire phone.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Cover your screen</strong> when entering PINs or reading OTPs — even on video calls with family. Habit-build this reflex.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Check caller ID:</strong> Save your bank's official helpline number. Any incoming call from a different number claiming to be the bank is suspicious by default.</div>
+      </div>
+    </div>
+
+    <div class="share-section reveal">
+      <p>Help others stay safe — share this intelligence</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareArticle('whatsapp')">Share on WhatsApp</button>
+        <button class="share-btn" onclick="shareArticle('twitter')">Share on X</button>
+        <button class="share-btn" onclick="shareArticle('copy')">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="back-cta reveal">
+      <a href="../cyber-jagrut.html">← Back to Threat Hub</a>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+try {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+} catch(err) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }
+function shareArticle(platform){
+  const url = window.location.href;
+  const text = 'Read this: The Screen Share Scam — how fake bank agents steal your money via AnyDesk | SatarkScan';
+  if(platform === 'whatsapp') { window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`); }
+  else if(platform === 'twitter') { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`); }
+  else { navigator.clipboard.writeText(url); const btn = event.target; const orig = btn.innerText; btn.innerText = 'Copied!'; setTimeout(()=>{ btn.innerText = orig; }, 2000); }
+}
+</script>
+</body>
+</html>

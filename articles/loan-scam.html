@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fake Loan Release Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Scammers prey on people who need loans by promising quick approvals — then stealing fees. Learn how the fake loan scam works.">
+  <link rel="canonical" href="https://satarkscan.in/articles/loan-scam.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/loan-scam.html">
+  <meta property="og:title" content="The Fake Loan Release Scam — Cyber Jagrut">
+  <meta property="og:description" content="They promise quick loan approval. Then they steal your processing fee. Learn how this scam works.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="manifest" href="../site.webmanifest" />
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(239,68,68,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(239,68,68,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--danger), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    .fake-approval { background: #0d1b0d; border: 1px solid rgba(74,222,128,0.2); border-radius: 16px; padding: 1.5rem; max-width: 360px; margin: 0 auto; }
+    .approval-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+    .approval-logo { width: 40px; height: 40px; background: linear-gradient(135deg, #1B5E20, #2E7D32); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .approval-name { font-weight: 700; font-size: 0.85rem; color: #4ADE80; font-family: var(--font-display); }
+    .approval-name span { display: block; font-size: 0.6rem; color: var(--text2); font-weight: 400; font-family: var(--font-body); }
+    .approval-body { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+    .loan-amount { font-size: 1.6rem; font-weight: 800; color: #4ADE80; font-family: var(--font-display); display: block; margin: 0.5rem 0; }
+    .approval-body .fee { color: var(--danger); font-weight: 700; }
+    .scam-label { display: inline-block; background: var(--danger); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 4px; margin-top: 1.2rem; letter-spacing: 0.1em; box-shadow: 0 0 12px rgba(239,68,68,0.5); }
+
+    .fee-ladder { margin: 2rem 0; display: flex; flex-direction: column; gap: 0; }
+    .fee-step { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15); position: relative; }
+    .fee-step:first-child { border-radius: 12px 12px 0 0; }
+    .fee-step:last-child { border-radius: 0 0 12px 12px; border-top: none; }
+    .fee-step:not(:first-child):not(:last-child) { border-top: none; }
+    .fee-num { font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; color: var(--danger); min-width: 24px; }
+    .fee-label { font-size: 0.95rem; color: var(--text); flex: 1; }
+    .fee-amount { font-family: var(--font-mono); font-weight: 700; color: var(--danger); font-size: 0.9rem; }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; }
+    .big-rule { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.02)); border: 2px solid rgba(239,68,68,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: var(--danger); font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html" class="active">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Financial Fraud Alert</div>
+      <h1>The Fake Loan Release Scam</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 5 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ What victims see</div>
+    <div class="fake-approval">
+      <div class="approval-header">
+        <div class="approval-logo">💰</div>
+        <div class="approval-name">QuickLoan India<span>Instant Personal Loan · Approved</span></div>
+      </div>
+      <div class="approval-body">
+        🎉 Congratulations! Your loan application has been <strong style="color:#4ADE80">APPROVED</strong>.<span class="loan-amount">₹2,00,000</span>To release funds, pay a one-time processing fee of <span class="fee">₹2,499</span> via QR below. Amount will be credited within 2 hours.
+      </div>
+    </div>
+    <div style="text-align:center"><span class="scam-label">⚠ THIS IS A SCAM</span></div>
+  </div>
+
+  <div class="article-body">
+    <h2>The loan that was never going to arrive</h2>
+    <p>India has millions of people who need urgent credit but cannot easily access formal banking. Scammers target this exact vulnerability. They advertise instant loans on social media, Google, and WhatsApp with zero paperwork and same-day approval. The only requirement? A small "processing fee" paid upfront.</p>
+    <p>Once the fee is paid, the scammer either disappears or finds a reason to demand more money. The loan never comes. The fees are gone.</p>
+
+    <div class="scenario-narrative">
+      Vikram from Bengaluru needed ₹1.5 lakh urgently for a family medical emergency. He found a "QuickLoan" ad on Instagram. He was approved within 20 minutes. Then came the fees — processing fee, insurance fee, GST deposit, account verification. Each time he paid, another fee appeared. He lost ₹18,000 before realising there was never any loan.
+    </div>
+
+    <h2>The fee ladder — how they drain you slowly</h2>
+    <p>Sophisticated loan scammers don't ask for a large amount upfront. They use a "fee ladder" — small, escalating charges that feel manageable:</p>
+    <div class="fee-ladder">
+      <div class="fee-step"><span class="fee-num">1</span><span class="fee-label">Processing fee</span><span class="fee-amount">₹1,999</span></div>
+      <div class="fee-step"><span class="fee-num">2</span><span class="fee-label">Insurance premium deposit</span><span class="fee-amount">₹3,499</span></div>
+      <div class="fee-step"><span class="fee-num">3</span><span class="fee-label">GST compliance charge</span><span class="fee-amount">₹2,100</span></div>
+      <div class="fee-step"><span class="fee-num">4</span><span class="fee-label">Account verification fee</span><span class="fee-amount">₹4,999</span></div>
+      <div class="fee-step"><span class="fee-num">5</span><span class="fee-label">Loan released → scammer vanishes</span><span class="fee-amount" style="color:var(--danger)">₹0 received</span></div>
+    </div>
+
+    <div class="big-rule">
+      <div class="emoji">🏦</div>
+      <p>No legitimate lender in India asks for fees before releasing a loan.</p>
+      <div class="sub">RBI regulations prohibit upfront fee collection before loan disbursement.</div>
+    </div>
+
+    <h2>How SatarkScan helps</h2>
+    <p>Every step of this scam involves a QR code or UPI payment link. The VPAs used often contain words like <strong>loan</strong>, <strong>release</strong>, <strong>finance</strong>, or <strong>processing</strong>. The amounts are typically pre-filled and often just below ₹5,000 to avoid round-number detection. SatarkScan will flag the pre-filled amount, any suspicious keywords, and threshold-dodging patterns like ₹4,999 or ₹2,499.</p>
+
+    <h2>Red flags</h2>
+    <div class="red-flags">
+      <div class="info-card danger"><span class="icon">🚩</span><div>Any loan that requires upfront payment before funds are released.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>Approval within minutes with no credit check, no documents, no income verification.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>The "lender" contacts you first — via WhatsApp, Instagram, or SMS.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>Pressure to pay immediately or the loan offer expires.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>The company has no RBI registration number or a fake one.</div></div>
+    </div>
+
+    <h2>What to do instead</h2>
+    <div class="green-tips">
+      <div class="info-card safe"><span class="icon">✅</span><div>Verify any lender on the RBI website at <strong>rbi.org.in</strong> — check the registered NBFC list before paying anything.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Approach your own bank first — they have your transaction history and can offer genuine credit.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Scan any loan-related QR code with SatarkScan before making any payment.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Report fake lenders to the RBI's sachet portal at <strong>sachet.rbi.org.in</strong>.</div></div>
+    </div>
+
+    <div class="share-section">
+      <p>Someone in financial difficulty is the most vulnerable. Share this.</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="navigator.share ? navigator.share({title:'Loan Scam Alert',url:window.location.href}) : navigator.clipboard.writeText(window.location.href)">📤 Share Article</button>
+        <a href="../cyber-jagrut.html" class="share-btn">← More Scam Guides</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:center;gap:0.6rem">
+        <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+        SatarkScan
+      </div>
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+      <li><a href="../terms.html">Terms of Use</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }}); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

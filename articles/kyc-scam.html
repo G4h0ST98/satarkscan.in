@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The KYC Update Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Scammers impersonate banks and telecom companies to steal your UPI access. Learn how the fake KYC scam works and how to protect yourself.">
+  <link rel="canonical" href="https://satarkscan.in/articles/kyc-scam.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/kyc-scam.html">
+  <meta property="og:title" content="The KYC Update Scam — Cyber Jagrut">
+  <meta property="og:description" content="Scammers impersonate banks to steal your UPI access. Learn how the fake KYC scam works.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(239,68,68,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(239,68,68,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--danger), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    .fake-sms { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; max-width: 360px; margin: 0 auto; }
+    .sms-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .sms-icon { width: 36px; height: 36px; background: #1565C0; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .sms-sender { font-family: var(--font-mono); font-size: 0.7rem; color: #90CAF9; font-weight: 700; }
+    .sms-sender span { display: block; font-size: 0.55rem; color: var(--text2); font-weight: 400; margin-top: 1px; }
+    .sms-body { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+    .sms-body strong { color: var(--danger); }
+    .sms-link { display: inline-block; margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.72rem; color: #90CAF9; border-bottom: 1px solid rgba(144,202,249,0.3); }
+    .scam-label { display: inline-block; background: var(--danger); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 4px; margin-top: 1.2rem; letter-spacing: 0.1em; box-shadow: 0 0 12px rgba(239,68,68,0.5); }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; }
+    .big-rule { background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.02)); border: 2px solid rgba(239,68,68,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: var(--danger); font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html" class="active">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Banking Scam Alert</div>
+      <h1>The Fake KYC Update Scam</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 5 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ A message you might receive</div>
+    <div class="fake-sms">
+      <div class="sms-header">
+        <div class="sms-icon">🏦</div>
+        <div class="sms-sender">SBI-ALERT<span>State Bank of India · Official</span></div>
+      </div>
+      <div class="sms-body">
+        Dear Customer, your KYC is <strong>PENDING</strong>. Your account will be <strong>BLOCKED within 24 hours</strong> if KYC is not updated. Click to complete:
+        <span class="sms-link">bit.ly/sbi-kyc-update-urgent</span>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="scam-label">⚠ THIS IS A SCAM</span></div>
+  </div>
+
+  <div class="article-body">
+    <h2>Your bank will never threaten to block your account by SMS</h2>
+    <p>The KYC scam is one of the most effective in India because it weaponises fear. The word "blocked" is enough to make most people act without thinking. Scammers know this, and they exploit it relentlessly.</p>
+    <p>These messages impersonate the RBI, NPCI, SBI, HDFC, Jio, Airtel, and other trusted institutions. The sender ID can look official — SMS spoofing allows scammers to display names like "SBI-ALERT" or "JIO-KYC." But behind it is a fraudster who wants either your UPI PIN or a payment from you.</p>
+
+    <div class="scenario-narrative">
+      Ramesh from Hyderabad received an SMS that looked like it was from his bank. The link took him to a convincing fake website that asked for his UPI ID, linked mobile number, and "a verification payment of ₹1" to confirm his identity. He entered his details. Within minutes, ₹47,000 was drained from his account.
+    </div>
+
+    <h2>Two ways this scam steals from you</h2>
+    <div class="red-flags">
+      <div class="info-card danger"><span class="icon">🎣</span><div><strong>Phishing link.</strong> The SMS contains a shortened URL that takes you to a fake bank or telecom website. It looks real. It asks for your UPI PIN, OTP, or Aadhaar number. Never enter these anywhere except your official banking app.</div></div>
+      <div class="info-card danger"><span class="icon">📲</span><div><strong>UPI collect request.</strong> After you click the link, you are redirected to a page that says "pay ₹1 to verify your identity." This is a UPI collect request. Approving it gives the scammer access to your linked bank account — and they will immediately transfer the maximum possible amount.</div></div>
+    </div>
+
+    <div class="big-rule">
+      <div class="emoji">🏦</div>
+      <p>Your real bank will never ask you to verify KYC by paying money.</p>
+      <div class="sub">Verification is free. Always. No exceptions.</div>
+    </div>
+
+    <h2>Why the "₹1 verification" trick is so dangerous</h2>
+    <p>Many victims think, "It's only ₹1, what can go wrong?" The ₹1 is not the theft — it is the authentication. When you approve a UPI collect request, you are authorising a transaction. The scammer can change the amount on their end or immediately send a second collect request for a much larger sum, exploiting the window of trust.</p>
+    <p>SatarkScan will flag collect requests, pre-filled amounts, and VPAs with keywords like <strong>kyc</strong>, <strong>verify</strong>, and <strong>blocked</strong>. If you receive a QR code claiming to be for KYC verification, scan it with SatarkScan first.</p>
+
+    <h2>Red flags</h2>
+    <div class="red-flags">
+      <div class="info-card danger"><span class="icon">🚩</span><div>Any message threatening account suspension or blocking within hours.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>A link to complete KYC — your bank's app handles this, not a link.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>Being asked to pay even ₹1 to "verify" your identity.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>The message asks for your UPI PIN, OTP, or Aadhaar number.</div></div>
+    </div>
+
+    <h2>What to do</h2>
+    <div class="green-tips">
+      <div class="info-card safe"><span class="icon">✅</span><div>Open your bank's official app directly. If KYC was genuinely pending, you would see a notice there — not in an SMS.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Never click links in SMS or WhatsApp messages claiming to be from your bank.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>If you receive a QR code for "KYC verification," scan it with SatarkScan before doing anything.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Report fraudulent messages to your telecom via the Sanchar Saathi portal or call 1930.</div></div>
+    </div>
+
+    <div class="share-section">
+      <p>Your parents or grandparents are the most targeted. Share this with them.</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="navigator.share ? navigator.share({title:'KYC Scam Alert',url:window.location.href}) : navigator.clipboard.writeText(window.location.href)">📤 Share Article</button>
+        <a href="../cyber-jagrut.html" class="share-btn">← More Scam Guides</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:center;gap:0.6rem">
+        <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+        SatarkScan
+      </div>
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+      <li><a href="../terms.html">Terms of Use</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }}); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

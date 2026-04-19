@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SatarkScan — Scan Before You Pay | Free UPI QR Fraud Detector</title>
+  <meta name="description" content="India's free UPI QR fraud detector. Instant Risk Score. 100% on your phone. No data ever leaves your device.">
+  <link rel="canonical" href="https://satarkscan.in/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satarkscan.in/">
+  <meta property="og:title" content="SatarkScan — Scan Before You Pay">
+  <meta property="og:description" content="India's free UPI QR fraud detector. Instant Risk Score. 100% on your phone.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.in">
+  <link rel="preconnect" href="https://fonts.gstatic.in" crossorigin>
+  <link href="https://fonts.googleapis.in/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <style>
+    :root {
+      --bg-deep: #060612;
+      --bg-mid: #0E0E1F;
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.08);
+      --glass-hover: rgba(255,255,255,0.07);
+      --purple-glow: rgba(123,58,236,0.4);
+      --cyan-glow: rgba(34,211,238,0.3);
+      --safe-glow: rgba(16,185,129,0.3);
+    }
+
+    body { background: var(--bg-deep); }
+
+    section, footer, article, .mobile-menu, .mobile-sticky-cta { position: relative; z-index: 1; }
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1.4rem 2.5rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+    }
+    .navbar.scrolled {
+      background: rgba(4,2,15,0.7);
+      backdrop-filter: blur(24px) saturate(1.5);
+      border-bottom: 1px solid rgba(123,58,236,0.12);
+      padding: 0.9rem 2.5rem;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.55); transition: color 0.3s; letter-spacing: 0.01em; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-cta {
+      background: rgba(123,58,236,0.15); border: 1px solid rgba(123,58,236,0.35);
+      color: #fff; padding: 0.6rem 1.4rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.88rem; cursor: pointer;
+      transition: all 0.3s; backdrop-filter: blur(10px);
+    }
+    .nav-cta:hover { background: rgba(123,58,236,0.3); border-color: rgba(123,58,236,0.7); box-shadow: 0 0 20px rgba(123,58,236,0.25); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(255,255,255,0.7); border-radius: 2px; transition: all 0.3s; }
+
+    .mobile-menu {
+      display: none; flex-direction: column; position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(4,2,15,0.97); backdrop-filter: blur(30px);
+      z-index: 999; padding: 5rem 2rem 2rem;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-bottom: 1px solid rgba(123,58,236,0.15);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu a { font-size: 1.1rem; color: rgba(255,255,255,0.7); padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #fff; }
+    .mobile-menu .nav-cta { margin-top: 1rem; text-align: center; padding: 0.8rem; border-radius: 50px; border-bottom: none; }
+
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 9rem 2.5rem 5rem;
+      background: radial-gradient(ellipse 80% 60% at 60% 30%, rgba(74,20,140,0.18) 0%, transparent 65%),
+                  radial-gradient(ellipse 50% 40% at 80% 70%, rgba(34,211,238,0.06) 0%, transparent 60%);
+    }
+    .hero-grid-3d {
+      position: absolute; bottom: -40px; left: 0; right: 0; height: 50%;
+      background: linear-gradient(transparent, rgba(123,58,236,0.03));
+      background-image: linear-gradient(rgba(123,58,236,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(123,58,236,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: perspective(600px) rotateX(55deg);
+      transform-origin: bottom center;
+      mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      pointer-events: none; z-index: 1;
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; animation: blobDrift 8s ease-in-out infinite; }
+    .blob-1 { width: 500px; height: 500px; background: rgba(74,20,140,0.2); top: -10%; right: -5%; animation-delay: 0s; }
+    .blob-2 { width: 350px; height: 350px; background: rgba(34,211,238,0.08); bottom: 10%; left: -5%; animation-delay: -3s; }
+    .blob-3 { width: 250px; height: 250px; background: rgba(16,185,129,0.08); top: 40%; right: 30%; animation-delay: -5s; }
+    @keyframes blobDrift { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(20px, -20px) scale(1.05); } 66% { transform: translate(-15px, 15px) scale(0.97); } }
+
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; z-index: 3; position: relative; width: 100%; }
+    .hero-text { display: flex; flex-direction: column; gap: 1.8rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 0.4rem 1rem 0.4rem 0.6rem; border-radius: 50px; width: fit-content; font-family: var(--font-mono); font-size: 0.75rem; color: var(--safe); letter-spacing: 0.05em; backdrop-filter: blur(10px); }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--safe); animation: safePulse 2s ease-in-out infinite; box-shadow: 0 0 8px var(--safe); }
+    @keyframes safePulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.04em; color: #fff; }
+    .hero h1 em { font-style: normal; background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { color: rgba(255,255,255,0.5); font-size: 1.08rem; line-height: 1.75; max-width: 480px; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    .btn-3d { position: relative; overflow: hidden; background: linear-gradient(135deg, #6d28d9, #7c3aed, #4f46e5); color: #fff; padding: 0.95rem 2.2rem; border-radius: 14px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 0 rgba(0,0,0,0.4), 0 8px 40px rgba(109,40,217,0.35), inset 0 1px 0 rgba(255,255,255,0.2); font-family: var(--font-body); display: inline-flex; align-items: center; gap: 0.6rem; transform: translateY(0); }
+    .btn-3d::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); transition: left 0.5s; }
+    .btn-3d:hover::before { left: 100%; }
+    .btn-3d:hover { transform: translateY(-3px); box-shadow: 0 7px 0 rgba(0,0,0,0.4), 0 16px 50px rgba(109,40,217,0.5), inset 0 1px 0 rgba(255,255,255,0.2); }
+    .btn-3d:active { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.4), 0 4px 20px rgba(109,40,217,0.3); }
+    .btn-ghost { background: var(--glass); border: 1px solid var(--glass-border); color: rgba(255,255,255,0.8); padding: 0.95rem 2.2rem; border-radius: 14px; font-weight: 600; font-size: 0.95rem; cursor: pointer; backdrop-filter: blur(12px); transition: all 0.3s; font-family: var(--font-body); display: inline-flex; align-items: center; gap: 0.6rem; }
+    .btn-ghost:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.2); color: #fff; }
+
+    .hero-visual { display: flex; justify-content: center; align-items: center; perspective: 1400px; position: relative; }
+    .hero-visual::before { content: ''; position: absolute; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(74,20,140,0.4), transparent 70%); filter: blur(40px); animation: ringPulse 4s ease-in-out infinite; }
+    @keyframes ringPulse { 0%,100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 0.5; } }
+
+    .phone-3d-wrap { position: relative; transform: rotateY(-14deg) rotateX(5deg) rotateZ(2deg); transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); animation: floatPhone 6s ease-in-out infinite; }
+    .phone-3d-wrap:hover { transform: rotateY(-2deg) rotateX(2deg) rotateZ(0deg) scale(1.02); animation-play-state: paused; }
+    @keyframes floatPhone { 0%, 100% { transform: rotateY(-14deg) rotateX(5deg) rotateZ(2deg) translateY(0); } 50% { transform: rotateY(-14deg) rotateX(5deg) rotateZ(2deg) translateY(-12px); } }
+
+    .phone-frame { width: 258px; height: 548px; background: #111116; border-radius: 40px; position: relative; overflow: visible; box-shadow: 0 0 0 1.5px rgba(255,255,255,0.1), 0 0 0 2.5px rgba(0,0,0,0.9), 0 40px 100px rgba(0,0,0,0.85), 0 0 60px rgba(74,20,140,0.2); }
+    .phone-frame::before { content: ''; position: absolute; inset: 0; border-radius: 40px; background: linear-gradient(145deg, rgba(255,255,255,0.09) 0%, transparent 40%, transparent 65%, rgba(0,0,0,0.2) 100%); z-index: 30; pointer-events: none; }
+    .phone-frame::after { content: ''; position: absolute; right: -3.5px; top: 95px; width: 3px; height: 50px; background: #1e1e22; border-radius: 0 2px 2px 0; box-shadow: 0 65px 0 #1e1e22, 0 90px 0 #1e1e22; }
+.phone-screen {
+  position: absolute;
+  inset: 5px 5px 7px 5px; /* slightly thicker bottom like real phones */
+  border-radius: 32px;
+}
+    .phone-notch { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; background: #050508; border-radius: 50%; z-index: 25; box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 0 8px rgba(0,0,0,1); }
+
+    .float-chip { position: absolute; border-radius: 50px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); padding: 0.55rem 1rem; font-size: 0.75rem; font-weight: 600; white-space: nowrap; z-index: 10; box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 0 rgba(255,255,255,0.06) inset; animation: floatChip 5s ease-in-out infinite; }
+    .chip-safe { background: rgba(16,185,129,0.15); color: var(--safe); border-color: rgba(16,185,129,0.25); top: 22%; right: -60px; animation-delay: -1s; }
+    .chip-offline { background: rgba(34,211,238,0.1); color: var(--cyan); border-color: rgba(34,211,238,0.2); bottom: 28%; left: -55px; animation-delay: -2.5s; }
+    .chip-langs { background: rgba(123,58,236,0.15); color: #a78bfa; border-color: rgba(123,58,236,0.25); bottom: 14%; right: -50px; animation-delay: -4s; }
+    @keyframes floatChip { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    /* APP SCREENS */
+    .sb { position: absolute; top: 0; left: 0; right: 0; z-index: 15; display: flex; justify-content: space-between; align-items: center; padding: 7px 14px 0; font-size: 0.48rem; font-weight: 600; color: #fff; font-family: var(--font-body); pointer-events: none; }
+    .sb.dark { color: #333; }
+    .sb-left { flex: 1; }
+    .sb-center { width: 20px; }
+    .sb-right { flex: 1; display: flex; justify-content: flex-end; gap: 4px; align-items: center; }
+    .sb-signal { display: flex; align-items: flex-end; gap: 1px; height: 9px; }
+    .sb-signal span { display: block; width: 2.5px; border-radius: 0.5px; }
+    .sb-signal span:nth-child(1) { height: 3px; }
+    .sb-signal span:nth-child(2) { height: 5px; }
+    .sb-signal span:nth-child(3) { height: 7px; }
+    .sb-signal span:nth-child(4) { height: 9px; }
+    .sb.dark .sb-signal span { background: #333; }
+    .sb-signal span { background: #fff; }
+    .sb-5g { font-size: 0.42rem; font-weight: 700; letter-spacing: -0.02em; }
+    .sb-battery { display: flex; align-items: center; position: relative; }
+    .sb-battery svg { width: 14px; height: 8px; }
+    .app-screen { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transform: translateX(16px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; overflow: hidden; }
+    .app-screen.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+
+    /* DASHBOARD */
+    #screenDash { background: #EEEDF2; padding-top: 26px; overflow: hidden; }
+    .d-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 10px; background: #EEEDF2; }
+    .d-head-left { display: flex; align-items: center; gap: 8px; }
+    .d-logo { width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0; overflow: visible; }
+    .d-titles { display: flex; flex-direction: column; }
+    .d-name { font-weight: 800; font-size: 0.78rem; color: #1a1a2e; font-family: var(--font-display); line-height: 1.2; }
+    .d-sub { font-size: 0.4rem; color: #888; }
+    .d-dots { display: flex; flex-direction: column; gap: 2px; padding: 4px; }
+    .d-dots span { width: 2.5px; height: 2.5px; border-radius: 50%; background: #666; display: block; }
+    .d-btn { background: #fff; margin: 0 10px 6px; padding: 9px 12px; border-radius: 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .d-btn-icon { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; }
+    .d-btn-icon.purple { background: rgba(74,20,140,0.08); color: #4A148C; }
+    .d-btn-icon.green { background: rgba(46,125,50,0.1); color: #2E7D32; }
+    .d-btn-text { font-size: 0.58rem; font-weight: 700; color: #1a1a2e; line-height: 1.2; }
+    .d-btn-sub { font-size: 0.38rem; color: #999; font-weight: 400; }
+
+    /* STATS CARD — legend removed, spacing tightened */
+    .d-stats { background: #fff; margin: 0 10px 6px; padding: 8px 12px 4px; border-radius: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); flex: none !important; overflow: hidden; }
+    .d-stats-title { font-size: 0.6rem; font-weight: 800; color: #1a1a2e; margin-bottom: 3px; }
+    .d-chart { width: 100%; height: 36px !important; max-height: 36px !important; display: block; }
+    .d-legend { display: none; margin: 0; }    
+    .d-stats-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f0f0f0; padding-top: 4px; margin-top: 0; }
+    .d-scanned-amt { font-size: 0.58rem; font-weight: 800; color: #1a1a2e; }
+    .d-scanned-sub { font-size: 0.35rem; color: #999; }
+    .d-risk-pill { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: #D32F2F; font-size: 0.37rem; font-weight: 700; padding: 3px 7px; border-radius: 20px; }
+
+    .d-tabs { display: flex; background: #EEEDF2; border-bottom: 1px solid #ddd; margin: 0; }
+    .d-tab { flex: 1; text-align: center; font-size: 0.46rem; font-weight: 600; padding: 6px 0 5px; color: #888; position: relative; }
+    .d-tab.active { color: #4A148C; }
+    .d-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 20%; right: 20%; height: 2px; background: #4A148C; border-radius: 2px; }
+    .d-history { flex: 1; overflow: hidden; padding: 6px 10px; display: flex; flex-direction: column; gap: 5px; }
+    .h-card { background: #fff; border-radius: 12px; padding: 8px 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+    .h-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
+    .h-vpa { font-size: 0.5rem; font-weight: 700; color: #1a1a2e; }
+    .h-level { font-size: 0.44rem; font-weight: 800; }
+    .h-level.low { color: #2E7D32; }
+    .h-level.high { color: #D32F2F; }
+    .h-level.medium { color: #E65100; }
+    .h-card-mid { display: flex; align-items: center; justify-content: space-between; }
+    .h-name-row { display: flex; align-items: center; gap: 4px; }
+    .h-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .h-name { font-size: 0.42rem; color: #555; }
+    .h-amt { font-size: 0.44rem; font-weight: 700; color: #D32F2F; }
+    .h-card-bot { display: flex; justify-content: space-between; margin-top: 2px; }
+    .h-date { font-size: 0.38rem; color: #aaa; }
+    .h-score { font-size: 0.38rem; color: #aaa; }
+
+    /* SCAN SCREEN */
+    #screenScan { background: #000; }
+    .scan-overlay { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, rgba(74,20,140,0.15), #000 70%); }
+    .scan-box { width: 110px; height: 110px; position: relative; margin-bottom: 18px; }
+    .scan-box::before, .scan-box::after { content: ''; position: absolute; width: 22px; height: 22px; border-color: #22D3EE; border-style: solid; border-width: 0; }
+    .scan-box::before { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; border-radius: 3px 0 0 0; }
+    .scan-box::after { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; border-radius: 0 3px 0 0; }
+    .scan-box-bl::before, .scan-box-bl::after { content: ''; position: absolute; width: 22px; height: 22px; border-color: #22D3EE; border-style: solid; border-width: 0; }
+    .scan-box-bl::before { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; border-radius: 0 0 0 3px; }
+    .scan-box-bl::after { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; border-radius: 0 0 3px 0; }
+    .scan-beam { position: absolute; top: 10%; left: 8%; right: 8%; height: 2px; background: linear-gradient(90deg, transparent, #22D3EE, transparent); animation: beamSweep 2s ease-in-out infinite; box-shadow: 0 0 10px #22D3EE; }
+    @keyframes beamSweep { 0%,100% { top: 10%; } 50% { top: 85%; } }
+    .scan-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: #22D3EE; letter-spacing: 0.15em; }
+
+    /* RESULT SCREEN */
+    #screenResult { background: #EEEDF2; display: flex; flex-direction: column; overflow: hidden; }
+    .r-header { background: #D32F2F; color: #fff; padding: 8px 12px 10px; position: relative; overflow: hidden; flex-shrink: 0; text-align: center; }
+    .r-header::after { content: ''; position: absolute; top: 0; left: -60%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); animation: scanLine 3s ease-in-out infinite; }
+    @keyframes scanLine { 0% { left: -60%; } 100% { left: 120%; } }
+    .r-head-row { display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 2px; }
+    .r-back { font-size: 0.7rem; color: rgba(255,255,255,0.9); position: absolute; left: 0; }
+    .r-title { font-weight: 800; font-size: 0.72rem; font-family: var(--font-display); letter-spacing: 0.02em; }
+    .r-conf { font-size: 0.42rem; opacity: 0.85; text-align: center; }
+    .r-tabs { display: flex; background: #fff; border-bottom: 1px solid #eee; flex-shrink: 0; }
+    .r-tab { flex: 1; text-align: center; font-size: 0.44rem; font-weight: 600; padding: 5px 0 4px; color: #888; position: relative; }
+    .r-tab.active { color: #D32F2F; }
+    .r-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 15%; right: 15%; height: 2px; background: #4A148C; border-radius: 2px; }
+    .r-body { flex: 1; overflow: hidden; padding: 6px 10px 8px; }
+    .r-risk-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.06); margin-bottom: 6px; }
+    .r-risk-badge { background: #D32F2F; color: #fff; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; }
+    .r-badge-label { font-size: 0.6rem; font-weight: 800; font-family: var(--font-display); }
+    .r-badge-conf { font-size: 0.42rem; opacity: 0.9; }
+    .r-card-body { padding: 10px 12px; }
+    .r-score-lbl { font-size: 0.55rem; font-weight: 800; color: #1a1a2e; margin-bottom: 5px; }
+    .r-bar-wrap { position: relative; margin-bottom: 4px; }
+    .r-bar-outer { width: 100%; height: 6px; border-radius: 4px; overflow: hidden; }
+    .r-bar-fill { height: 100%; background: linear-gradient(90deg, #4CAF50 0%, #FFC107 50%, #F44336 100%); width: 0%; transition: width 1.5s ease; border-radius: 4px; }
+    .r-bar-labels { display: flex; justify-content: space-between; font-size: 0.32rem; margin-top: 2px; }
+    .r-bar-labels span:nth-child(1) { color: #2E7D32; }
+    .r-bar-labels span:nth-child(2) { color: #E65100; }
+    .r-bar-labels span:nth-child(3) { color: #D32F2F; }
+    .r-divider { height: 1px; background: #f0f0f0; margin: 6px 0; }
+    .r-reason { font-size: 0.46rem; color: #333; margin-bottom: 4px; display: flex; gap: 5px; align-items: flex-start; line-height: 1.3; }
+    .r-rdot { color: #D32F2F; font-size: 0.5rem; flex-shrink: 0; margin-top: 1px; }
+    .r-flagged { display: flex; align-items: center; gap: 4px; font-size: 0.44rem; color: #D32F2F; font-weight: 600; margin-top: 4px; }
+    .r-detail-card { background: #fff; border-radius: 14px; padding: 10px 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); margin-bottom: 6px; }
+    .r-info { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; border-bottom: 1px solid #f5f5f5; }
+    .r-info:last-child { border-bottom: none; }
+    .r-label { font-size: 0.42rem; color: #999; }
+    .r-val { font-size: 0.44rem; color: #1a1a2e; font-weight: 700; text-align: right; max-width: 55%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .r-val.red { color: #D32F2F; }
+    .r-btns { display: flex; gap: 5px; margin: 0 0 5px; }
+    .r-btn-ghost { flex: 1; background: #2a2a2a; color: #fff; text-align: center; padding: 7px 4px; border-radius: 20px; font-size: 0.46rem; font-weight: 700; }
+    .r-proceed { background: #4A148C; color: #fff; text-align: center; padding: 8px; border-radius: 10px; font-size: 0.56rem; font-weight: 800; cursor: pointer; margin-bottom: 4px; }
+    .r-tagline { text-align: center; font-size: 0.36rem; color: #aaa; }
+    .r-privacy-note { text-align: center; font-size: 0.36rem; color: #aaa; padding: 5px 8px 4px; background: #fff; border-radius: 10px; margin: 2px 0; }
+
+    .phone-nav { position: absolute; bottom: 0; left: 0; right: 0; z-index: 20; height: 32px; display: flex; align-items: center; justify-content: center; padding-bottom: 4px; }
+    .phone-nav.light { background: rgba(238,237,242,0.97); border-top: 1px solid rgba(0,0,0,0.06); }
+    .phone-nav.dark-nav { background: rgba(0,0,0,0.93); border-top: 1px solid rgba(255,255,255,0.05); }
+    .nav-home-pill { width: 44px; height: 3.5px; border-radius: 3px; background: rgba(30,30,50,0.2); }
+    .nav-home-pill.white { background: rgba(255,255,255,0.3); }
+
+    /* STATS BAND */
+    .stats-band { position: relative; padding: 3rem 2.5rem; overflow: hidden; background: linear-gradient(180deg, rgba(74,20,140,0.08) 0%, rgba(4,2,15,0) 100%); border-top: 1px solid rgba(123,58,236,0.08); border-bottom: 1px solid rgba(123,58,236,0.08); }
+    .stats-band-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
+    .stat-item { position: relative; padding: 1.5rem 1rem; }
+    .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: linear-gradient(180deg, transparent, rgba(123,58,236,0.3), transparent); }
+    .stat-num { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; letter-spacing: -0.04em; background: linear-gradient(135deg, #fff 30%, rgba(167,139,250,0.9) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+    .stat-label { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-top: 0.4rem; letter-spacing: 0.02em; }
+
+    /* WHAT IT DOES */
+    .what-section { padding: 8rem 2.5rem; position: relative; overflow: hidden; }
+    .what-section::before { content: ''; position: absolute; right: -15%; top: -20%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(74,20,140,0.12), transparent 65%); pointer-events: none; }
+    .what-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--cyan); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1rem; }
+    .section-h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+    .section-lead { color: rgba(255,255,255,0.45); font-size: 1.05rem; line-height: 1.75; max-width: 600px; margin-bottom: 3rem; }
+    .bullets-3d { display: flex; flex-direction: column; gap: 1rem; }
+    .bullet-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.2rem 1.4rem; backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .bullet-item:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.14); transform: translateX(6px); }
+    .bullet-icon { width: 38px; height: 38px; min-width: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .bullet-icon.purple { background: rgba(123,58,236,0.15); border: 1px solid rgba(123,58,236,0.2); }
+    .bullet-icon.cyan { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.15); }
+    .bullet-icon.safe { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.15); }
+    .bullet-text strong { display: block; color: #fff; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .bullet-text span { color: rgba(255,255,255,0.45); font-size: 0.88rem; line-height: 1.5; }
+    .what-visual { display: flex; justify-content: center; align-items: center; perspective: 1000px; }
+    .shield-card-3d { width: 100%; max-width: 340px; background: linear-gradient(145deg, rgba(20,16,40,0.95), rgba(10,8,24,0.9)); border: 1px solid rgba(255,255,255,0.08); border-radius: 28px; padding: 2.5rem 2rem; box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(74,20,140,0.15), inset 0 1px 0 rgba(255,255,255,0.07); transform: rotateY(5deg) rotateX(-3deg); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+    .shield-card-3d:hover { transform: rotateY(0deg) rotateX(0deg); }
+    .shield-card-3d::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); }
+    .shield-icon-wrap { width: 80px; height: 80px; margin: 0 auto 1.5rem; position: relative; display: flex; align-items: center; justify-content: center; }
+    .shield-icon-wrap::before { content: ''; position: absolute; inset: -10px; border-radius: 50%; background: radial-gradient(circle, rgba(16,185,129,0.2), transparent 70%); animation: shieldPulse 3s ease-in-out infinite; }
+    @keyframes shieldPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.6; } }
+    .shield-icon-wrap svg { position: relative; z-index: 1; }
+    .shield-status { text-align: center; margin-bottom: 1.5rem; }
+    .shield-status h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--safe); margin-bottom: 0.3rem; }
+    .shield-status p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+    .signal-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .signal-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+    .signal-label { color: rgba(255,255,255,0.55); }
+    .signal-pass { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: var(--safe); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); padding: 0.15rem 0.6rem; border-radius: 50px; }
+    .signal-warn { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: #ef4444; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); padding: 0.15rem 0.6rem; border-radius: 50px; }
+
+    /* HOW IT WORKS */
+    .steps-section { padding: 8rem 2.5rem; position: relative; background: linear-gradient(180deg, transparent, rgba(74,20,140,0.05), transparent); }
+    .steps-inner { max-width: 1100px; margin: 0 auto; }
+    .steps-header { text-align: center; margin-bottom: 5rem; }
+    .steps-track { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; gap: 0; align-items: center; }
+    .step-connector { display: flex; align-items: center; justify-content: center; position: relative; }
+    .step-connector::before { content: ''; display: block; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(123,58,236,0.3), rgba(34,211,238,0.3)); }
+    .step-arrow { position: absolute; color: rgba(34,211,238,0.6); font-size: 1.2rem; background: var(--bg-deep); padding: 0 4px; }
+    .step-card-3d { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem 2rem; text-align: center; backdrop-filter: blur(12px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+    .step-card-3d::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+    .step-card-3d:hover { background: var(--glass-hover); border-color: rgba(123,58,236,0.3); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 30px rgba(123,58,236,0.12); }
+    .step-num-badge { width: 52px; height: 52px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem; font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; position: relative; }
+    .step-num-badge.s1 { background: rgba(123,58,236,0.15); border: 1px solid rgba(123,58,236,0.3); color: #a78bfa; }
+    .step-num-badge.s2 { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.25); color: var(--cyan); }
+    .step-num-badge.s3 { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: var(--safe); }
+    .step-card-3d h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.7rem; }
+    .step-card-3d p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.6; }
+
+    /* FEATURES */
+    .features-section { padding: 8rem 2.5rem; }
+    .features-inner { max-width: 1200px; margin: 0 auto; }
+    .features-header { margin-bottom: 4rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255,255,255,0.04); border-radius: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+    .feat-cell { background: rgba(7,4,26,0.85); padding: 2.4rem 2rem; position: relative; overflow: hidden; cursor: crosshair; transition: background 0.3s; }
+    .feat-cell::before { content: ""; position: absolute; inset: 0; background: radial-gradient(300px circle at var(--mx,50%) var(--my,50%), rgba(123,58,236,0.12), transparent 50%); opacity: 0; transition: opacity 0.4s; }
+    .feat-cell:hover::before { opacity: 1; }
+    .feat-cell:hover { background: rgba(12,8,35,0.9); }
+    .feat-cell-content { position: relative; z-index: 2; }
+    .feat-icon-box { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+    .feat-cell h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .feat-cell p { color: rgba(255,255,255,0.4); font-size: 0.88rem; line-height: 1.65; }
+
+    /* CTA */
+    .cta-section { padding: 8rem 2.5rem; text-align: center; position: relative; }
+    .cta-section::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(74,20,140,0.2), transparent 60%); pointer-events: none; z-index: 0; }
+    .cta-card { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; background: linear-gradient(145deg, rgba(20,14,45,0.95), rgba(10,7,28,0.9)); border: 1px solid rgba(255,255,255,0.08); border-radius: 32px; padding: 4rem 3rem; box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 80px rgba(74,20,140,0.15), inset 0 1px 0 rgba(255,255,255,0.06); overflow: hidden; }
+    .cta-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), var(--cyan), rgba(167,139,250,0.5), transparent); }
+    .cta-card h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .cta-card p { color: rgba(255,255,255,0.45); font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 450px; margin-left: auto; margin-right: auto; }
+    .cta-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem; margin-top: 2.5rem; }
+    .pill { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; padding: 0.4rem 1rem; border-radius: 50px; letter-spacing: 0.04em; }
+    .pill.safe { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--safe); }
+    .pill.purple { background: rgba(123,58,236,0.1); border: 1px solid rgba(123,58,236,0.2); color: #a78bfa; }
+    .pill.cyan { background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.18); color: var(--cyan); }
+
+    /* FOOTER */
+    .footer { padding: 2rem 2.5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(6,6,18,0.8); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+    .footer-logo .logo-row { display: flex; align-items: center; gap: 0.6rem; }
+    .tagline { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+    .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; align-items: center; }
+    .footer-links a { color: rgba(255,255,255,0.35); font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-bottom { width: 100%; text-align: center; color: rgba(255,255,255,0.2); font-size: 0.78rem; padding-top: 1rem; margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer-bottom span { color: #ef4444; }
+
+    .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(4,2,15,0.92); backdrop-filter: blur(20px); border-top: 1px solid rgba(123,58,236,0.2); padding: 1rem 1.5rem; z-index: 998; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-sticky-cta.visible { transform: translateY(0); }
+    .mobile-sticky-cta .btn-3d { width: 100%; justify-content: center; font-size: 1rem; }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* QUOTE */
+    .quote-section { padding: 7rem 2.5rem; position: relative; overflow: hidden; background: linear-gradient(180deg, transparent, rgba(74,20,140,0.07) 50%, transparent); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .quote-inner { max-width: 820px; margin: 0 auto; text-align: left; position: relative; padding-left: 2rem; }
+    .quote-inner::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, transparent, var(--primary), transparent); border-radius: 2px; }
+    .quote-marks { font-family: var(--font-display); font-size: 5rem; line-height: 0.6; color: var(--primary); opacity: 0.4; margin-bottom: 1.5rem; font-weight: 900; display: block; }
+    .quote-text { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.9rem); font-weight: 500; line-height: 1.55; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; margin-bottom: 2rem; }
+    .quote-author { font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary); font-style: normal; letter-spacing: 0.05em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+      .hero-text { align-items: center; }
+      .hero-sub { margin: 0 auto; }
+      .hero-btns { justify-content: center; }
+      .hero-visual { order: -1; }
+      .chip-safe { right: -40px; }
+      .chip-offline { left: -40px; }
+      .chip-langs { right: -35px; }
+      .what-grid { grid-template-columns: 1fr !important; }
+      .what-visual { margin-top: 3rem; }
+      .steps-track { grid-template-columns: 1fr; gap: 1.5rem; }
+      .step-connector { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .stats-band-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 1.2rem 1.5rem; }
+      .navbar.scrolled { padding: 0.8rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .what-section, .steps-section, .features-section, .cta-section { padding: 5rem 1.5rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .phone-3d-wrap { animation: none; transform: none !important; }
+      .float-chip { display: none; }
+      .mobile-sticky-cta { display: block; }
+      .footer { padding-bottom: 6rem; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-logo { align-items: center; }
+      .footer-links { justify-content: center; }
+      .cta-card { padding: 2.5rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.8rem; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-3d, .btn-ghost { width: 100%; justify-content: center; }
+      .stats-band-inner { grid-template-columns: 1fr 1fr; }
+      .phone-frame { width: 220px; height: 468px; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="starCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:0.55"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+    SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="about.html" onclick="closeMobile()">About</a>
+  <a href="cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="hero-grid-3d"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        100% Free &amp; Offline
+      </div>
+      <h1>Scan <em>Before</em><br>You Pay.</h1>
+      <p class="hero-sub">Scammers paste fake QR codes over real ones every day. SatarkScan analyzes every UPI code for 13 fraud signals on your device — before a single rupee leaves your bank.</p>
+      <div class="hero-btns">
+        <a href="#download" class="btn-3d">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get the Free App
+        </a>
+        <a href="#how" class="btn-ghost">
+          How it works
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="float-chip chip-safe"><span>✓</span> Payment Safe</div>
+      <div class="float-chip chip-offline">⚡ 100% Offline</div>
+      <div class="float-chip chip-langs">🌐 23 Languages</div>
+
+      <div class="phone-3d-wrap" id="phone3d">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+           <!-- SCREEN 1: Dashboard -->
+            <div class="app-screen active" id="screenDash">
+              <div class="sb dark"><span class="sb-left">10:30</span><span class="sb-center"></span><span class="sb-right"><span class="sb-5g" style="color:#333">5G</span><span class="sb-signal"><span style="background:#333"></span><span style="background:#333"></span><span style="background:#333"></span><span style="background:#333"></span></span><svg width="12" height="7" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5" stroke="#333" stroke-opacity="0.35"/><rect x="1" y="1" width="8" height="6" rx="1" fill="#333"/><path d="M12 3v2a1 1 0 000-2z" fill="#333" fill-opacity="0.4"/></svg></span></div>
+              <div class="d-head">
+                <div class="d-head-left">
+                  <div class="d-logo">
+                    <svg width="32" height="32" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shD2"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shD2)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+                  </div>
+                  <div class="d-titles">
+                    <div class="d-name">SatarkScan</div>
+                    <div class="d-sub">Stay alert before paying</div>
+                  </div>
+                </div>
+                <div class="d-dots"><span></span><span></span><span></span></div>
+              </div>
+              <div class="d-btn">
+                <div class="d-btn-icon purple">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A148C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+                <div><div class="d-btn-text">Upload QR Image</div><div class="d-btn-sub">Select and scan QR code from your gallery</div></div>
+              </div>
+              <div class="d-btn">
+                <div class="d-btn-icon green">◎</div>
+                <div><div class="d-btn-text">Scan QR Live</div><div class="d-btn-sub">Instantly scan QR code in real-time</div></div>
+              </div>
+              <div class="d-stats">
+                <div class="d-stats-title">Scanned This Month</div>
+                <svg class="d-chart" viewBox="0 0 180 42" preserveAspectRatio="none" style="height:36px;display:block;">
+                  <defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9C27B0" stop-opacity="0.15"/><stop offset="100%" stop-color="#9C27B0" stop-opacity="0.01"/></linearGradient></defs>
+                  <polyline points="10,34 45,22 80,12 120,30 155,8 170,30" fill="none" stroke="#9C27B0" stroke-width="1.5" stroke-linejoin="round"/>
+                  <polygon points="10,34 45,22 80,12 120,30 155,8 170,30 170,42 10,42" fill="url(#chartFill)"/>
+                  <circle cx="10" cy="34" r="3" fill="#2E7D32"/>
+                  <circle cx="45" cy="22" r="3" fill="#E65100"/>
+                  <circle cx="80" cy="12" r="3" fill="#D32F2F"/>
+                  <circle cx="120" cy="30" r="3" fill="#2E7D32"/>
+                  <circle cx="155" cy="8" r="3" fill="#D32F2F"/>
+                  <circle cx="170" cy="30" r="3" fill="#2E7D32"/>
+                </svg>
+                <div class="d-stats-footer">
+                  <div><div class="d-scanned-amt">₹51,000 Scanned</div><div class="d-scanned-sub">— 5 QR codes analyzed —</div></div>
+                  <div class="d-risk-pill">⚠ 1 High Risk</div>
+                </div>
+              </div>
+              <div class="d-tabs">
+                <div class="d-tab">Risk</div>
+                <div class="d-tab active">History</div>
+                <div class="d-tab">My VPAs</div>
+              </div>
+              <div class="d-history">
+                <div class="h-card">
+                  <div class="h-card-top"><div class="h-vpa">kumar7734@paytm</div><div class="h-level low">LOW</div></div>
+                  <div class="h-card-mid"><div class="h-name-row"><div class="h-dot" style="background:#2E7D32"></div><div class="h-name">Suresh Kumar</div></div><div class="h-amt" style="color:#2E7D32">₹500.00</div></div>
+                  <div class="h-card-bot"><div class="h-date">12 Apr, 10:29 pm</div><div class="h-score">Score: 20</div></div>
+                </div>
+                <div class="h-card">
+                  <div class="h-card-top"><div class="h-vpa">refund.helpdesk9@ybl</div><div class="h-level high">HIGH</div></div>
+                  <div class="h-card-mid"><div class="h-name-row"><div class="h-dot" style="background:#D32F2F"></div><div class="h-name">Support Team</div></div><div class="h-amt">₹500.00</div></div>
+                  <div class="h-card-bot"><div class="h-date">12 Apr, 10:28 pm</div><div class="h-score">Score: 70</div></div>
+                </div>
+                <div class="h-card">
+                  <div class="h-card-top"><div class="h-vpa">merchant5291@okaxis</div><div class="h-level medium">MEDIUM</div></div>
+                  <div class="h-card-mid"><div class="h-name-row"><div class="h-dot" style="background:#E65100"></div><div class="h-name">Online Store</div></div><div class="h-amt">₹50,000.00</div></div>
+                  <div class="h-card-bot"><div class="h-date">12 Apr, 10:27 pm</div><div class="h-score">Score: 45</div></div>
+                </div>
+              </div>
+              <div class="phone-nav light"><div class="nav-home-pill"></div></div>
+            </div>
+            <!-- SCREEN 2: Scan -->
+            <div class="app-screen" id="screenScan">
+              <div class="sb"><span class="sb-left">10:30</span><span class="sb-center"></span><span class="sb-right"><span class="sb-5g">5G</span><span class="sb-signal"><span></span><span></span><span></span><span></span></span><svg width="12" height="7" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5" stroke="white" stroke-opacity="0.5"/><rect x="1" y="1" width="8" height="6" rx="1" fill="white"/><path d="M12 3v2a1 1 0 000-2z" fill="white" fill-opacity="0.5"/></svg></span></div>
+              <div class="scan-overlay">
+                <div class="scan-box">
+                  <div class="scan-box-bl"></div>
+                  <div class="scan-beam"></div>
+                  <div style="position:absolute;inset:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;opacity:0.25">
+                    <div style="background:#22D3EE;border-radius:1px"></div><div style="background:#22D3EE;border-radius:1px"></div><div style="background:#22D3EE;border-radius:1px;grid-column:span 3"></div>
+                    <div style="background:#22D3EE;border-radius:1px;grid-row:span 2"></div><div></div><div></div><div></div><div style="background:#22D3EE;border-radius:1px;grid-row:span 2"></div>
+                    <div></div><div style="background:#22D3EE;border-radius:1px"></div><div></div><div></div>
+                    <div style="background:#22D3EE;border-radius:1px;grid-column:span 3"></div><div></div><div></div>
+                    <div></div><div></div><div style="background:#22D3EE;border-radius:1px"></div><div></div><div></div>
+                  </div>
+                </div>
+                <div class="scan-label">ANALYZING QR...</div>
+                <div style="font-size:0.4rem;color:rgba(255,255,255,0.3);margin-top:6px;font-family:var(--font-mono);letter-spacing:0.05em">13 signals · 100% on-device</div>
+              </div>
+              <div class="phone-nav dark-nav"><div class="nav-home-pill white"></div></div>
+            </div>
+
+            <!-- SCREEN 3: Result -->
+            <div class="app-screen" id="screenResult">
+              <div class="r-header">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:0 2px 6px;font-size:0.42rem;font-weight:600;color:rgba(255,255,255,0.9);font-family:var(--font-body)"><span>10:28</span><span style="width:20px"></span><span style="display:flex;align-items:center;gap:4px"><span style="font-size:0.38rem;font-weight:700">5G</span><span style="display:flex;align-items:flex-end;gap:1px;height:8px"><span style="display:block;width:2px;height:2.5px;background:rgba(255,255,255,0.9);border-radius:0.5px"></span><span style="display:block;width:2px;height:4px;background:rgba(255,255,255,0.9);border-radius:0.5px"></span><span style="display:block;width:2px;height:6px;background:rgba(255,255,255,0.9);border-radius:0.5px"></span><span style="display:block;width:2px;height:8px;background:rgba(255,255,255,0.9);border-radius:0.5px"></span></span><svg width="12" height="7" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="11" height="7" rx="1.5" stroke="white" stroke-opacity="0.5"/><rect x="1" y="1" width="5" height="6" rx="1" fill="white"/><path d="M12 3v2a1 1 0 000-2z" fill="white" fill-opacity="0.5"/></svg></span></div>
+                <div class="r-head-row"><span class="r-back">←</span><span class="r-title">⚠ HIGH RISK</span></div>
+                <div class="r-conf">Confidence: 88%</div>
+              </div>
+              <div class="r-tabs">
+                <div class="r-tab active">Risk</div>
+                <div class="r-tab">History</div>
+                <div class="r-tab">My VPAs</div>
+              </div>
+              <div class="r-body">
+                <div class="r-risk-card">
+                  <div class="r-risk-badge"><span class="r-badge-label">⚠ HIGH RISK</span><span class="r-badge-conf">Confidence: 88%</span></div>
+                  <div class="r-card-body">
+                    <div class="r-score-lbl">Risk Score: 100 / 100</div>
+                    <div class="r-bar-wrap">
+                      <div class="r-bar-outer"><div class="r-bar-fill" id="rBar"></div></div>
+                      <div class="r-bar-labels"><span>LOW RISK</span><span>MEDIUM RISK</span><span>HIGH RISK</span></div>
+                    </div>
+                    <div class="r-divider"></div>
+                    <div class="r-reason"><span class="r-rdot">●</span> Pre-filled amount present</div>
+                    <div class="r-reason"><span class="r-rdot">●</span> Very high amount (₹50,000+)</div>
+                    <div class="r-reason"><span class="r-rdot">●</span> Round amount pattern</div>
+                    <div class="r-reason"><span class="r-rdot">●</span> VPA contains long numeric sequence</div>
+                    <div class="r-flagged">⚠ Flagged</div>
+                    <div class="r-divider"></div>
+                    <div class="r-info"><span class="r-label">UPI ID</span><span class="r-val">refund.helpdesk9@ybl</span></div>
+                    <div class="r-info"><span class="r-label">Name</span><span class="r-val">Support Team</span></div>
+                    <div class="r-info"><span class="r-label">Amount</span><span class="r-val red">₹50,000.00</span></div>
+                    <div style="height:6px"></div>
+                    <div class="r-btns"><div class="r-btn-ghost">Mark Trusted</div><div class="r-btn-ghost">⚠ Flagged</div></div>
+                    <div class="r-proceed">Proceed to Pay →</div>
+                    <div class="r-tagline">Be Alert. Be Safe.</div>
+                  </div>
+                </div>
+                <div class="r-privacy-note">🔒 All analysis is done locally. No data ever leaves your device.</div>
+              </div>
+              <div class="phone-nav light"><div class="nav-home-pill"></div></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-band-inner">
+    <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="13">0</span></div><div class="stat-label">Fraud Signals</div></div>
+    <div class="stat-item reveal reveal-delay-1"><div class="stat-num"><span class="counter" data-target="23">0</span></div><div class="stat-label">Indian Languages</div></div>
+    <div class="stat-item reveal reveal-delay-2"><div class="stat-num"><span class="counter" data-target="100">0</span>%</div><div class="stat-label">Private &amp; Offline</div></div>
+    <div class="stat-item reveal reveal-delay-3"><div class="stat-num">₹0</div><div class="stat-label">Free Forever</div></div>
+  </div>
+</div>
+
+<!-- WHAT IT DOES -->
+<section class="what-section" id="what">
+  <div class="what-inner">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;" class="what-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">The Problem &amp; The Fix</div>
+        <h2 class="section-h2">Your personal QR<br>fraud shield.</h2>
+        <p class="section-lead">Most UPI apps blindly process whatever QR you scan. SatarkScan intercepts the danger. We run 13 checks on-device in milliseconds — giving you a clear risk score before anything leaves your bank.</p>
+        <div class="bullets-3d">
+          <div class="bullet-item"><div class="bullet-icon purple">📡</div><div class="bullet-text"><strong>100% Offline Engine</strong><span>Zero internet needed. Works perfectly in markets, streets, anywhere.</span></div></div>
+          <div class="bullet-item"><div class="bullet-icon cyan">🔐</div><div class="bullet-text"><strong>Zero Data Collection</strong><span>No backend, no login. Your scans never leave your phone. Ever.</span></div></div>
+          <div class="bullet-item"><div class="bullet-icon safe">🌐</div><div class="bullet-text"><strong>23 Indian Languages</strong><span>Alerts in Hindi, Tamil, Bengali, Marathi and 19 more. No one gets left behind.</span></div></div>
+        </div>
+      </div>
+      <div class="what-visual reveal reveal-delay-2">
+        <div class="shield-card-3d">
+          <div class="shield-icon-wrap">
+            <svg width="60" height="60" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="rgba(16,185,129,0.15)"/><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="#10B981"/></svg>
+          </div>
+          <div class="shield-status"><h3>Payment Safe</h3><p>sharma9284@ybl · Rajesh Kumar</p></div>
+          <div class="signal-list">
+            <div class="signal-item"><span class="signal-label">VPA Pattern</span><span class="signal-pass">PASS</span></div>
+            <div class="signal-item"><span class="signal-label">Pre-filled Amount</span><span class="signal-pass">NONE</span></div>
+            <div class="signal-item"><span class="signal-label">Scam Keywords</span><span class="signal-pass">CLEAR</span></div>
+            <div class="signal-item"><span class="signal-label">Collect Request</span><span class="signal-pass">NO</span></div>
+            <div class="signal-item"><span class="signal-label">Collect+High Amount</span><span class="signal-pass">CLEAR</span></div>
+            <div class="signal-item"><span class="signal-label">Amount</span><span class="signal-pass">₹150 ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps-section" id="how">
+  <div class="steps-inner">
+    <div class="steps-header reveal">
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="section-h2">Three steps to safety</h2>
+    </div>
+    <div class="steps-track">
+      <div class="step-card-3d reveal"><div class="step-num-badge s1">1</div><h3>Scan or Upload</h3><p>Point your camera at any UPI QR code, or upload a screenshot from your gallery.</p></div>
+      <div class="step-connector"><span class="step-arrow">→</span></div>
+      <div class="step-card-3d reveal reveal-delay-1"><div class="step-num-badge s2">2</div><h3>Instant Analysis</h3><p>13 fraud checks run locally in milliseconds. No network needed. No data sent.</p></div>
+      <div class="step-connector"><span class="step-arrow">→</span></div>
+      <div class="step-card-3d reveal reveal-delay-2"><div class="step-num-badge s3">3</div><h3>See Your Score</h3><p><span style="color:#ef4444;font-weight:600">RED</span> means danger. <span style="color:#10B981;font-weight:600">GREEN</span> means safe. Launch your UPI app with confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES GRID -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="features-header reveal">
+      <div class="section-eyebrow">Core Engine</div>
+      <h2 class="section-h2">Everything you need.<br>Nothing you don't.</h2>
+    </div>
+    <div class="features-grid" id="featGrid">
+      <div class="feat-cell reveal"><div class="feat-cell-content"><div class="feat-icon-box">🔒</div><h3>Zero Data Collection</h3><p>Your data never leaves your phone. Analysis happens entirely on-device using ML Kit.</p></div></div>
+      <div class="feat-cell reveal reveal-delay-1"><div class="feat-cell-content"><div class="feat-icon-box">🌐</div><h3>23 Indian Languages</h3><p>From Hindi to Tamil. SatarkScan speaks your language so critical alerts are never missed.</p></div></div>
+      <div class="feat-cell reveal reveal-delay-2"><div class="feat-cell-content"><div class="feat-icon-box">⚡</div><h3>Instant Risk Score</h3><p>Get a precise 0–100 risk score instantly. Flags fake customer care VPAs and inflated amounts.</p></div></div>
+      <div class="feat-cell reveal"><div class="feat-cell-content"><div class="feat-icon-box">📊</div><h3>Local Scan History</h3><p>Review all your past scans with full details, stored only on your device.</p></div></div>
+      <div class="feat-cell reveal reveal-delay-1"><div class="feat-cell-content"><div class="feat-icon-box">✅</div><h3>Personal Trust List</h3><p>Mark vendors trusted or flag scams. Build your own on-device reputation database.</p></div></div>
+      <div class="feat-cell reveal reveal-delay-2"><div class="feat-cell-content"><div class="feat-icon-box">🗑️</div><h3>One-Tap Delete</h3><p>Wipe your entire scan history instantly. No recovery, no questions asked.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner reveal">
+    <div class="quote-marks">"</div>
+    <blockquote class="quote-text">I built SatarkScan because UPI scams are rising every year in India and most people don't know how to spot a fraudulent QR code. This app is my attempt to give every Indian a simple fraud shield — in their own language.</blockquote>
+    <cite class="quote-author">— Patel, Creator of SatarkScan</cite>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+
+<section class="cta-section" id="download">
+  <div class="cta-card reveal">
+    <div class="section-eyebrow" style="margin-bottom:1rem">Get Protected Today</div>
+    <h2>Ready to scan<br><em style="font-style:normal;background:linear-gradient(135deg,#fff,#a78bfa 50%,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent">safely</em>?</h2>
+    <p>Free forever. No ads. No tracking. No servers. Just a smarter way to pay.</p>
+    <div class="btn-3d" style="display:inline-flex; opacity:0.85; cursor:default;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.83 1.5-.4l14 8.5c.5.3.5 1.1 0 1.4l-14 8.5c-.5.4-1.5.4-1.5-.4z"/></svg>
+      Coming Soon on Play Store
+    </div>
+    <div class="cta-pills">
+      <span class="pill safe">100% Offline</span>
+      <span class="pill purple">Zero Ads</span>
+      <span class="pill cyan">No Login Required</span>
+      <span class="pill safe">Free Forever</span>
+      <span class="pill purple">Open Source</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="logo-row">
+        <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+        SatarkScan
+      </div>
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Use</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+
+<div class="mobile-sticky-cta" id="stickyMobile">
+  <a href="#download" class="btn-3d">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download Free App
+  </a>
+</div>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+const stickyMobile = document.getElementById('stickyMobile');
+window.addEventListener('scroll', () => { stickyMobile.classList.toggle('visible', window.scrollY > 300); });
+const featGrid = document.getElementById('featGrid');
+if (featGrid) { featGrid.addEventListener('mousemove', e => { for (const cell of document.querySelectorAll('.feat-cell')) { const rect = cell.getBoundingClientRect(); cell.style.setProperty('--mx', `${e.clientX - rect.left}px`); cell.style.setProperty('--my', `${e.clientY - rect.top}px`); } }); }
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }}); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const counterObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { const el = e.target, target = parseInt(el.dataset.target); if (isNaN(target)) return; const start = performance.now(), duration = 1800; const tick = (now) => { const p = Math.min((now - start) / duration, 1); el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); counterObs.unobserve(el); } }); }, { threshold: 0.1 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+function runMockup() {
+  const screens = [document.getElementById('screenDash'), document.getElementById('screenScan'), document.getElementById('screenResult')];
+  if (!screens[0]) return;
+  const show = (i) => { screens.forEach(s => s.classList.remove('active')); screens[i].classList.add('active'); };
+  show(0);
+  setTimeout(() => show(1), 3200);
+  setTimeout(() => { show(2); const bar = document.getElementById('rBar'); if (bar) setTimeout(() => { bar.style.width = '100%'; }, 100); }, 5000);
+  setTimeout(() => { const bar = document.getElementById('rBar'); if (bar) bar.style.width = '0%'; runMockup(); }, 9500);
+}
+runMockup();
+(function() {
+  const canvas = document.getElementById('starCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const PARTICLE_COUNT = 90, CONNECTION_DIST = 140, CURSOR_ATTRACT_DIST = 180, CURSOR_FORCE = 0.04;
+  const mouse = { x: -9999, y: -9999 };
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', () => { resize(); init(); });
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+  function init() { particles = []; for (let i = 0; i < PARTICLE_COUNT; i++) { particles.push({ x: rand(0, W), y: rand(0, H), vx: rand(-0.25, 0.25), vy: rand(-0.25, 0.25), r: rand(1.2, 2.5), baseOpacity: rand(0.25, 0.65), opacity: 0, pulse: rand(0, Math.PI * 2), pulseSpeed: rand(0.005, 0.015), color: Math.random() > 0.8 ? [167, 139, 250] : Math.random() > 0.65 ? [34, 211, 238] : [255, 255, 255] }); } }
+  init();
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      const dx = mouse.x - p.x, dy = mouse.y - p.y, dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < CURSOR_ATTRACT_DIST && dist > 0) { const force = (1 - dist / CURSOR_ATTRACT_DIST) * CURSOR_FORCE; p.vx += dx / dist * force; p.vy += dy / dist * force; }
+      const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > 1.2) { p.vx = (p.vx / speed) * 1.2; p.vy = (p.vy / speed) * 1.2; }
+      if (dist > CURSOR_ATTRACT_DIST) { p.vx *= 0.99; p.vy *= 0.99; p.vx += rand(-0.01, 0.01); p.vy += rand(-0.01, 0.01); }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -5) p.x = W + 5; if (p.x > W + 5) p.x = -5; if (p.y < -5) p.y = H + 5; if (p.y > H + 5) p.y = -5;
+      p.pulse += p.pulseSpeed; p.opacity = p.baseOpacity * (0.65 + 0.35 * Math.sin(p.pulse));
+      if (dist < CURSOR_ATTRACT_DIST) p.opacity = Math.min(1, p.opacity + (1 - dist / CURSOR_ATTRACT_DIST) * 0.5);
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${p.opacity})`; ctx.fill();
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j], dx = a.x - b.x, dy = a.y - b.y, dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECTION_DIST) {
+          const lineOpacity = (1 - dist / CONNECTION_DIST) * 0.18;
+          const aDist = Math.sqrt((mouse.x - a.x) ** 2 + (mouse.y - a.y) ** 2);
+          const bDist = Math.sqrt((mouse.x - b.x) ** 2 + (mouse.y - b.y) ** 2);
+          const nearCursor = Math.min(aDist, bDist) < CURSOR_ATTRACT_DIST;
+          const finalOpacity = nearCursor ? Math.min(0.7, lineOpacity * 5) : lineOpacity;
+          const [lr, lg, lb] = nearCursor ? [34, 211, 238] : [123, 58, 236];
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(${lr},${lg},${lb},${finalOpacity})`; ctx.lineWidth = nearCursor ? 0.8 : 0.4; ctx.stroke();
+        }
+      }
+      const cdx = mouse.x - particles[i].x, cdy = mouse.y - particles[i].y, cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+      if (cdist < CURSOR_ATTRACT_DIST * 0.7) { const op = (1 - cdist / (CURSOR_ATTRACT_DIST * 0.7)) * 0.55; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.strokeStyle = `rgba(34,211,238,${op})`; ctx.lineWidth = 0.6; ctx.stroke(); }
+    }
+    if (mouse.x > 0 && mouse.x < W) { ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2); ctx.fillStyle = 'rgba(34,211,238,0.5)'; ctx.fill(); ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 8, 0, Math.PI * 2); ctx.strokeStyle = 'rgba(34,211,238,0.15)'; ctx.lineWidth = 1; ctx.stroke(); }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

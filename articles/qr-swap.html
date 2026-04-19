@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The QR Code Swap Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="How scammers swap QR codes at shops and restaurants. Learn how to spot it and protect yourself before you pay.">
+  <link rel="canonical" href="https://satarkscan.in/articles/qr-swap.html">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/qr-swap.html">
+  <meta property="og:title" content="The QR Code Swap Scam — Cyber Jagrut">
+  <meta property="og:description" content="How scammers physically replace genuine QR codes at shops to steal your payments.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="manifest" href="../site.webmanifest" />
+
+  <style>
+    /* =========================================
+       ARTICLE-SPECIFIC PREMIUM STYLES
+       ========================================= */
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(239,68,68,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.2); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    /* Animated Scenario Box */
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(239,68,68,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--danger), transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2.5rem; text-align: center; font-weight: 700; }
+
+    /* QR Swap Animation specific to this article */
+    .swap-scene { display: flex; align-items: center; justify-content: center; gap: 3rem; margin: 1.5rem 0; }
+    .qr-holder { width: 120px; height: 120px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: .5rem; position: relative; }
+    .qr-holder.real { background: rgba(16,185,129,0.1); border: 2px dashed rgba(16,185,129,0.4); }
+    .qr-holder.fake { background: rgba(239,68,68,0.15); border: 2px solid rgba(239,68,68,0.4); box-shadow: 0 10px 30px rgba(239,68,68,0.2); animation: swapOver 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
+    
+    @keyframes swapOver { 
+      0%, 100% { transform: translateX(0); opacity: 1; } 
+      30% { transform: translateX(-110px) scale(1.05); opacity: 0.9; } 
+      50% { transform: translateX(-110px) scale(1.05); box-shadow: 0 0 40px rgba(239,68,68,0.5); } 
+      80% { transform: translateX(0); opacity: 1; } 
+    }
+    
+    .qr-holder .qr-icon { font-size: 3rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+    .qr-holder .qr-label { font-size: .75rem; font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .qr-holder.real .qr-label { color: var(--safe); }
+    .qr-holder.fake .qr-label { color: var(--danger); }
+    .swap-arrow { font-size: 2rem; color: var(--text2); opacity: 0.4; }
+
+    /* Typography & Content Formatting */
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+    
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+
+    /* Share Section */
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
+
+    @media(max-width: 768px) {
+      .swap-scene { gap: 1.5rem; }
+      .qr-holder { width: 90px; height: 90px; }
+      .qr-holder .qr-icon { font-size: 2rem; }
+      @keyframes swapOver { 
+        0%, 100% { transform: translateX(0); } 
+        30%, 50% { transform: translateX(-80px) scale(1.05); } 
+        80% { transform: translateX(0); } 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Physical Scam Alert</div>
+      <h1>The QR Code Swap</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 4 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ How the scam works</div>
+    <div class="swap-scene">
+      <div class="qr-holder real">
+        <span class="qr-icon">🏪</span>
+        <span class="qr-label">Real QR</span>
+      </div>
+      <span class="swap-arrow">←</span>
+      <div class="qr-holder fake">
+        <span class="qr-icon">💀</span>
+        <span class="qr-label">Scam QR</span>
+      </div>
+    </div>
+    <p style="text-align:center; color:var(--text2); font-size:0.95rem; margin-top:1.5rem; font-family:var(--font-mono);">The scammer sneaks in and pastes their sticker over the shop's code.</p>
+  </div>
+
+  <div class="article-body">
+    <h2 class="reveal">The real scenario</h2>
+    <div class="scenario-narrative reveal">
+      You stop at a juice stall. The owner has a printed QR code taped to the counter. You scan it with your UPI app and pay ₹80 for your juice. But what you didn't notice is that a scammer had carefully pasted their own printed QR code sticker on top of the shop owner's original one. Your ₹80 went straight to the scammer's account. The shop owner doesn't know, you don't know — until someone checks their balance at the end of the day.
+    </div>
+
+    <h2 class="reveal">How does this work?</h2>
+    <div class="reveal">
+      <p>This scam is shockingly low-tech, which makes it highly effective. The scammer simply prints out a sheet of QR codes linked to their own disposable bank accounts or digital wallets. They walk around targeting busy shops, tea stalls, restaurants, parking lots, and petrol pumps — places where people pay by scanning QR codes quickly without thinking twice.</p>
+      <p>When the shopkeeper is distracted or the shop is closed for the night, the scammer places their sticker directly over the legitimate one. The next day, every customer who scans that code is sending money to the scammer.</p>
+      <p>Because the victim scans the code and sees a legitimate UPI payment screen (which the scammer might have set up with a similar-sounding merchant name like "Juice Point"), they confidently enter their PIN. The payment goes through successfully, but the shopkeeper never receives the SMS confirmation.</p>
+    </div>
+
+    <h2 class="reveal">🚩 Red flags to watch for</h2>
+    <div class="red-flags reveal">
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The QR code looks like a loose sticker pasted on top of an acrylic stand or another laminated paper.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The edges of the QR code are slightly raised, peeling, or misaligned with the branding behind it.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The merchant name shown on your screen after scanning does not match the name written on the shop's board.</div>
+      </div>
+      <div class="info-card danger">
+        <span class="icon">🚩</span>
+        <div>The UPI ID shown on your phone looks like a personal name (e.g., rahul123@upi) instead of a verified merchant account.</div>
+      </div>
+    </div>
+
+    <h2 class="reveal">✅ How to stay safe</h2>
+    <div class="green-tips reveal">
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Verify the name:</strong> Always read the merchant name displayed in your UPI app aloud. Ask the shopkeeper, "Is this going to [Name]?" before you enter your PIN.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Physical inspection:</strong> Before scanning, take half a second to look at the code. If it looks like a cheap paper sticker slapped over a plastic stand, be cautious.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Use SatarkScan:</strong> Scan the code through the SatarkScan app first. Our engine checks the VPA reputation and flags suspicious personal accounts masquerading as businesses.</div>
+      </div>
+      <div class="info-card safe">
+        <span class="icon">✅</span>
+        <div><strong>Dynamic Codes:</strong> Whenever possible, ask the shopkeeper to show you a dynamic QR code directly from their UPI App or billing machine, rather than scanning the static code on the desk.</div>
+      </div>
+    </div>
+
+    <div class="share-section reveal">
+      <p>Help others stay safe — share this intelligence</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareArticle('whatsapp')">Share on WhatsApp</button>
+        <button class="share-btn" onclick="shareArticle('twitter')">Share on X</button>
+        <button class="share-btn" onclick="shareArticle('copy')">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="back-cta reveal">
+      <a href="../cyber-jagrut.html">← Back to Threat Hub</a>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+    </ul>
+    <div class="footer-bottom">
+      Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar & Mobile Menu
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// Scroll Reveals
+try {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+} catch(err) {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+}
+
+// Sharing functionality
+function shareArticle(platform){
+  const url = window.location.href; 
+  const text = 'Read this: The QR Code Swap scam — how to protect yourself | SatarkScan';
+  if(platform === 'whatsapp') {
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
+  } else if (platform === 'twitter') {
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+  } else {
+    navigator.clipboard.writeText(url);
+    const btn = event.target;
+    const originalText = btn.innerText;
+    btn.innerText = 'Copied!';
+    setTimeout(() => { btn.innerText = originalText; }, 2000);
+  }
+}
+</script>
+</body>
+</html>

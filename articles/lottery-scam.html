@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lottery & Prize Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="You didn't win anything. Learn how lottery and prize scams work in India and why they always end with a UPI QR code.">
+  <link rel="canonical" href="https://satarkscan.in/articles/lottery-scam.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://satarkscan.in/articles/lottery-scam.html">
+  <meta property="og:title" content="The Lottery & Prize Scam — Cyber Jagrut">
+  <meta property="og:description" content="You didn't win anything. Learn how lottery and prize scams work in India.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="manifest" href="../site.webmanifest" />
+  <style>
+    .article-hero { padding: 10rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(234,179,8,0.1), transparent 70%); pointer-events: none; z-index: -1; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--text2); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; transition: color .3s; }
+    .back-link:hover { color: var(--cyan); }
+    .article-tag { font-family: var(--font-mono); font-size: .8rem; color: #FBBF24; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; display: inline-block; background: rgba(234,179,8,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid rgba(234,179,8,0.25); }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; color: var(--text); line-height: 1.1; }
+    .article-meta-top { color: var(--text2); font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-family: var(--font-mono); }
+
+    .scenario-box { max-width: 700px; margin: 3rem auto; background: rgba(14,14,31,0.6); border: 1px solid rgba(234,179,8,0.2); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .scenario-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #FBBF24, transparent); animation: warnScan 3s linear infinite; }
+    @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: #FBBF24; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+
+    .fake-message { background: #075E54; border-radius: 18px 18px 0 18px; padding: 1.2rem 1.5rem; max-width: 340px; margin: 0 auto; box-shadow: 0 10px 30px rgba(7,94,84,0.3); }
+    .fake-message .sender { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .fake-message p { color: #fff; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+    .fake-message .prize { font-size: 1.4rem; font-weight: 800; color: #FBBF24; display: block; margin: 0.5rem 0; font-family: var(--font-display); }
+    .fake-message .cta { display: block; margin-top: 0.8rem; font-size: 0.75rem; color: #4ADE80; font-family: var(--font-mono); }
+    .msg-time { text-align: right; font-size: 0.6rem; color: rgba(255,255,255,0.4); font-family: var(--font-mono); margin-top: 0.5rem; }
+    .scam-label { display: inline-block; background: var(--danger); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 4px; margin-top: 1.2rem; letter-spacing: 0.1em; box-shadow: 0 0 12px rgba(239,68,68,0.5); }
+
+    .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: 3.5rem 0 1.2rem; color: #fff; letter-spacing: -.02em; }
+    .article-body p { color: var(--text2); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .scenario-narrative { background: rgba(34,211,238,0.05); border-left: 4px solid var(--cyan); padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0; font-size: 1.1rem; color: var(--text); line-height: 1.7; }
+    .big-rule { background: linear-gradient(135deg, rgba(234,179,8,0.1), rgba(234,179,8,0.02)); border: 2px solid rgba(234,179,8,0.3); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; }
+    .big-rule .emoji { font-size: 3rem; margin-bottom: 1rem; display: inline-block; }
+    .big-rule p { color: #fff; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .big-rule .sub { color: #FBBF24; font-size: 1rem; font-weight: 600; font-family: var(--font-mono); }
+    .red-flags, .green-tips { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--text); transition: transform 0.3s; }
+    .info-card:hover { transform: translateX(5px); }
+    .info-card.danger { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+    .info-card.safe { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+    .info-card .icon { font-size: 1.4rem; min-width: 1.4rem; margin-top: 2px; }
+    .share-section { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; background: rgba(14,14,31,0.3); border-radius: 20px; }
+    .share-section p { color: var(--text); font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
+    .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); transform: translateY(-2px); }
+    @media(max-width: 768px) { .scenario-box { padding: 2rem 1.2rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../cyber-jagrut.html" class="active">Cyber Jagrut</a></li>
+  </ul>
+  <a href="../index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html" onclick="closeMobile()">Home</a>
+  <a href="../about.html" onclick="closeMobile()">About</a>
+  <a href="../cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="../index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<article>
+  <header class="article-hero">
+    <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
+    <div class="reveal reveal-delay-1">
+      <div class="article-tag">Prize Fraud Alert</div>
+      <h1>The Lottery &amp; Prize Scam</h1>
+    </div>
+    <div class="article-meta-top reveal reveal-delay-2">
+      <span>📖 4 min read</span>
+      <span>🛡 SatarkScan Awareness</span>
+    </div>
+  </header>
+
+  <div class="scenario-box reveal">
+    <div class="scenario-title">⚠ A message you might receive</div>
+    <div class="fake-message">
+      <div class="sender">KBC Lottery · WhatsApp</div>
+      <p>🎉 Congratulations! Your mobile number has been selected in the<span class="prize">KBC Lucky Draw — ₹25 Lakh!</span>To claim your prize, a small processing fee of ₹1,999 is required.<span class="cta">Scan QR below to pay & receive your winnings →</span></p>
+      <div class="msg-time">10:34 AM ✓✓</div>
+    </div>
+    <div style="text-align:center"><span class="scam-label">⚠ THIS IS A SCAM</span></div>
+  </div>
+
+  <div class="article-body">
+    <h2>You did not win. Nobody did.</h2>
+    <p>Every year, millions of Indians receive messages claiming they have won a lottery, lucky draw, KBC prize, or government cash reward. The message looks official. The amount sounds life-changing. And there is always one catch — a small "processing fee" that must be paid first via UPI.</p>
+    <p>There is no prize. There is no lottery. The moment you pay that fee, it is gone. And the scammer moves on to the next victim.</p>
+
+    <div class="scenario-narrative">
+      Priya from Pune received a WhatsApp message saying her number had won ₹50 lakh in the "Jio Lucky Draw." She was asked to pay ₹2,500 as a "GST processing charge" via a QR code. She paid. Then another message arrived — she needed to pay ₹5,000 more to "unlock" the prize. She paid again. The prize never came. The number stopped responding.
+    </div>
+
+    <h2>How the scam is structured</h2>
+    <p>This scam follows a predictable playbook. Understanding it is your best defence:</p>
+    <div class="red-flags">
+      <div class="info-card danger"><span class="icon">📱</span><div><strong>Step 1 — The hook.</strong> A WhatsApp, SMS, or Instagram message announces you have won a large cash prize. It may use the name of a real company — Jio, KBC, Amazon, a government scheme.</div></div>
+      <div class="info-card danger"><span class="icon">💸</span><div><strong>Step 2 — The fee.</strong> You are told a small "processing fee," "GST charge," or "tax deposit" must be paid first to release your winnings. A QR code is shared.</div></div>
+      <div class="info-card danger"><span class="icon">🔄</span><div><strong>Step 3 — The drip.</strong> After you pay, another fee appears. Then another. Each payment "unlocks" the next stage. The prize never arrives.</div></div>
+      <div class="info-card danger"><span class="icon">🚪</span><div><strong>Step 4 — The vanish.</strong> Once you stop paying or push back, the number blocks you and disappears.</div></div>
+    </div>
+
+    <div class="big-rule">
+      <div class="emoji">🏆</div>
+      <p>No legitimate lottery or prize scheme ever asks you to pay money to receive money.</p>
+      <div class="sub">If you have to pay, you have already lost.</div>
+    </div>
+
+    <h2>Why SatarkScan can catch some of these</h2>
+    <p>When a scammer sends you a QR code for the "processing fee," SatarkScan will often flag it. The QR typically has a pre-filled amount (the "processing fee"), may use a VPA containing words like <code>prize</code>, <code>claim</code>, or <code>reward</code>, and often uses a collect request rather than a standard pay link. These all trigger signals in our fraud engine.</p>
+    <p>However, if the QR code looks completely clean — a personal VPA with no amount pre-filled — our engine may score it LOW RISK. That is a reminder that the scam itself lives in the WhatsApp message, not always in the QR code.</p>
+
+    <h2>Red flags to watch for</h2>
+    <div class="red-flags">
+      <div class="info-card danger"><span class="icon">🚩</span><div>You were told you won something you never entered.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>Any prize that requires an upfront payment to claim.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>The message creates urgency — "claim within 24 hours or forfeit."</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>The sender's number is a regular mobile number, not an official shortcode.</div></div>
+      <div class="info-card danger"><span class="icon">🚩</span><div>You are asked to keep the prize secret "for tax reasons."</div></div>
+    </div>
+
+    <h2>What to do instead</h2>
+    <div class="green-tips">
+      <div class="info-card safe"><span class="icon">✅</span><div>Delete the message immediately and block the number.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Report it on the National Cybercrime Portal at <strong>cybercrime.gov.in</strong> or call <strong>1930</strong>.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Share this article with family members who might be more vulnerable.</div></div>
+      <div class="info-card safe"><span class="icon">✅</span><div>Before scanning any QR related to a prize or reward, run it through SatarkScan first.</div></div>
+    </div>
+
+    <div class="share-section">
+      <p>Know someone who might fall for this? Share this article.</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="navigator.share ? navigator.share({title:'Lottery Scam Alert',url:window.location.href}) : navigator.clipboard.writeText(window.location.href)">📤 Share Article</button>
+        <a href="../cyber-jagrut.html" class="share-btn">← More Scam Guides</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div style="display:flex;align-items:center;gap:0.6rem">
+        <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg>
+        SatarkScan
+      </div>
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+      <li><a href="../terms.html">Terms of Use</a></li>
+    </ul>
+    <div class="footer-bottom">Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026</div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }}); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

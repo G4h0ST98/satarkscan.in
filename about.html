@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About SatarkScan | The Story Behind the App</title>
+  <meta name="description" content="Why SatarkScan was built — the personal story and mission behind India's free UPI QR fraud detector.">
+  <link rel="canonical" href="https://satarkscan.in/about.html">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#060612">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://satarkscan.in/about.html">
+  <meta property="og:title" content="About SatarkScan | Why We Exist">
+  <meta property="og:description" content="Built for family. Free for India. Learn why SatarkScan exists.">
+  <meta property="og:image" content="https://satarkscan.in/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About SatarkScan | Why We Exist">
+  <meta name="twitter:description" content="Built for family. Free for India. Learn why SatarkScan exists.">
+  <meta name="twitter:image" content="https://satarkscan.in/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <style>
+    /* =========================================
+       ABOUT PAGE PREMIUM STYLES
+       ========================================= */
+    .about-hero { padding: 10rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+    .about-hero::before { content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(123,58,236,0.15), transparent 70%); pointer-events: none; z-index: -1; }
+    .about-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 1rem; }
+    .text-gradient { background: linear-gradient(135deg, #fff, var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .about-hero p { color: var(--text2); font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+    /* The WhatsApp Story Bubble */
+    .story-section { display: flex; flex-direction: column; align-items: center; gap: 3rem; margin: 2rem 0; }
+    .chat-bubble-container { width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 1rem; }
+    .chat-bubble { background: #075E54; color: #fff; padding: 1rem 1.5rem; border-radius: 18px 18px 0 18px; position: relative; font-size: 1rem; line-height: 1.5; box-shadow: 0 10px 30px rgba(7,94,84,0.3); align-self: flex-end; }
+    .chat-bubble::after { content: ''; position: absolute; bottom: 0; right: -10px; width: 20px; height: 20px; background: radial-gradient(circle at top right, transparent 50%, #075E54 50%); border-bottom-left-radius: 10px; }
+    .chat-meta { display: flex; justify-content: flex-end; gap: 0.5rem; align-items: center; font-size: 0.7rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-family: var(--font-mono); }
+    .chat-meta span { color: #34B7F1; font-size: 0.9rem; } /* Blue ticks */
+    
+    .story-narrative { max-width: 700px; font-size: 1.1rem; color: var(--text2); line-height: 1.8; text-align: center; }
+    .story-narrative strong { color: var(--text); font-weight: 600; }
+
+    /* Vercel Spotlight Cards for Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0; }
+    .feature-card { background: rgba(14,14,31,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; position: relative; overflow: hidden; display: flex; flex-direction: column; text-align: center; cursor: crosshair; }
+    .feature-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(239,68,68,0.15), transparent 40%); opacity: 0; transition: opacity 0.3s; z-index: 0; pointer-events: none; }
+    .feature-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(239,68,68,0.5), transparent 40%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.3s; z-index: 1; pointer-events: none; }
+    .feature-card:hover::before, .feature-card:hover::after { opacity: 1; }
+    .feature-card-content { position: relative; z-index: 2; }
+    .stat-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: var(--danger); margin-bottom: 0.5rem; line-height: 1.1; }
+    .stat-num.compact { font-size: 2rem; }
+    .stat-label { color: var(--text2); font-size: 0.9rem; line-height: 1.4; }
+
+    /* Privacy Grid Override (Green Glow) */
+    .privacy-grid .feature-card::before { background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(16,185,129,0.15), transparent 40%); }
+    .privacy-grid .feature-card::after { background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(16,185,129,0.5), transparent 40%); }
+    .privacy-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 0 15px rgba(16,185,129,0.2)); }
+    .privacy-grid h3 { color: #fff; font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .privacy-grid p { color: var(--text2); font-size: 0.95rem; }
+
+    /* Premium Comparison Table */
+    .table-wrapper { width: 100%; overflow-x: auto; margin: 3rem 0; padding-bottom: 1rem; }
+    .compare-table { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; border-radius: 16px; }
+    .compare-table th, .compare-table td { padding: 1.2rem 1.5rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .compare-table th { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); padding-bottom: 1.5rem; }
+    .compare-table td.feature-name { font-weight: 500; color: var(--text); }
+    .compare-table td.no { color: var(--text2); opacity: 0.7; }
+    
+    /* Highlight Column */
+    .compare-table th.highlight { color: var(--cyan); background: rgba(123,58,236,0.1); border-top-left-radius: 16px; border-top-right-radius: 16px; border-top: 1px solid rgba(123,58,236,0.3); border-left: 1px solid rgba(123,58,236,0.3); border-right: 1px solid rgba(123,58,236,0.3); }
+    .compare-table td.highlight { background: rgba(123,58,236,0.1); color: var(--safe); font-weight: 600; border-left: 1px solid rgba(123,58,236,0.3); border-right: 1px solid rgba(123,58,236,0.3); }
+    .compare-table tr:last-child td.highlight { border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; border-bottom: 1px solid rgba(123,58,236,0.3); }
+
+    @media(max-width: 768px) {
+      .stats-grid, .privacy-grid { grid-template-columns: 1fr; }
+      .compare-table th, .compare-table td { padding: 1rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <svg class="site-logo" width="30" height="30" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shN"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shN)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="cyber-jagrut.html">Cyber Jagrut</a></li>
+  </ul>
+  <a href="index.html#download" class="nav-cta">Download App</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="about.html" onclick="closeMobile()">About</a>
+  <a href="cyber-jagrut.html" onclick="closeMobile()">Cyber Jagrut</a>
+  <a href="index.html#download" class="nav-cta" onclick="closeMobile()">Download App</a>
+</div>
+
+<section class="about-hero">
+  <h1 class="reveal">Why SatarkScan <span class="text-gradient">Exists</span></h1>
+  <p class="reveal reveal-delay-1">Because every Indian deserves a free, instant fraud check before their hard-earned money disappears.</p>
+</section>
+
+<section class="section">
+  <div class="reveal" style="text-align: center;">
+    <div class="section-label">The Inspiration</div>
+    <h2 class="section-title">It started with a WhatsApp message.</h2>
+  </div>
+  
+  <div class="story-section reveal reveal-delay-1">
+    <div class="chat-bubble-container">
+      <div class="chat-bubble">
+        "I just paid ₹200 to a scammer. The QR code pasted on the wall outside a shop had been swapped. Is there any way to get it back"
+        <div class="chat-meta">10:42 AM <span>✓✓</span></div>
+      </div>
+    </div>
+    
+    <div class="story-narrative">
+      <p>There was no way to get the money back. That moment stuck with me. I realised there was no simple tool for regular people to verify a QR code before they paid.</p>
+      <p style="margin-top: 1rem;">There was no app that worked in Hindi, Marathi, or Tamil. No app that worked when the internet was down. And certainly <strong>no app that actually respected user privacy.</strong></p>
+      <p style="margin-top: 1rem; color: var(--text);">So I built SatarkScan. Not as a company product, but as the tool I wished existed when my family needed it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">The Scale of the Problem</div>
+    <h2 class="section-title">UPI fraud is a silent epidemic.</h2>
+    <p class="section-desc">India's UPI ecosystem is incredible — but that scale has attracted a wave of scammers. In FY2024, the government recorded over 13 lakh fraud cases worth ₹1,087 crore. And that's only what got reported — 51% of victims never file a complaint at all.</p>
+  </div>
+  
+  <div class="stats-grid spotlight-container">
+    <div class="feature-card reveal">
+      <div class="feature-card-content">
+        <div class="stat-num">₹<span class="counter" data-target="1087">0</span> Cr</div>
+        <div class="stat-label">Lost to UPI fraud in FY2024 — the highest ever recorded</div>
+      </div>
+    </div>
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-card-content">
+        <div class="stat-num"><span class="counter" data-target="13">0</span>+ Lakh</div>
+        <div class="stat-label">Official UPI fraud cases in FY2024 alone — nearly double from FY2023</div>
+      </div>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-card-content">
+        <div class="stat-num compact">1 in 5</div>
+        <div class="stat-label">Indian UPI users experienced fraud at least once in the last 3 years</div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal" style="text-align:center; margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em;">
+    Sources: Ministry of Finance, Lok Sabha Nov 2024 &nbsp;·&nbsp; RBI Annual Report FY2024–25 &nbsp;·&nbsp; LocalCircles Survey, Jun 2025 (32,000 respondents)
+  </p>
+</section>
+
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">The Solution</div>
+    <h2 class="section-title">SatarkScan vs Doing Nothing</h2>
+    <p class="section-desc">We rely entirely on our eyes to spot a scam. SatarkScan gives your phone the ability to mathematically verify a code before you pay.</p>
+  </div>
+  
+  <div class="table-wrapper reveal reveal-delay-1">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th class="highlight">With SatarkScan</th>
+          <th>Without an App</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-name">Instant QR Fraud Check</td>
+          <td class="highlight">✅ Instant Risk Score (0-100)</td>
+          <td class="no">❌ Blind trust</td>
+        </tr>
+        <tr>
+          <td class="feature-name">Pre-filled Amount Warning</td>
+          <td class="highlight">✅ Flags hidden inflated amounts</td>
+          <td class="no">❌ Easy to overlook</td>
+        </tr>
+        <tr>
+          <td class="feature-name">Offline Capability</td>
+          <td class="highlight">✅ 100% functional without internet</td>
+          <td class="no">—</td>
+        </tr>
+        <tr>
+          <td class="feature-name">Language Support</td>
+          <td class="highlight">✅ 23 Indian Languages</td>
+          <td class="no">❌ English only (if any)</td>
+        </tr>
+        <tr>
+          <td class="feature-name">Data Privacy</td>
+          <td class="highlight">✅ Zero servers. 100% on-device.</td>
+          <td class="no">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="reveal" style="text-align:center">
+    <div class="section-label">Our Absolute Guarantee</div>
+    <h2 class="section-title">Your data stays on your phone. Period.</h2>
+    <p class="section-desc" style="margin: 0 auto;">We don't just say we respect your privacy — the app's architecture is literally built so no data can leave your device. It is a mathematical impossibility for us to track you.</p>
+  </div>
+  
+  <div class="stats-grid privacy-grid spotlight-container" style="margin-top: 3rem;">
+    <div class="feature-card reveal">
+      <div class="feature-card-content">
+        <span class="privacy-icon">🚫</span>
+        <h3>Zero Servers</h3>
+        <p>SatarkScan does not have a backend database or API. There is nowhere for your scan data to go.</p>
+      </div>
+    </div>
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-card-content">
+        <span class="privacy-icon">📵</span>
+        <h3>Zero Tracking</h3>
+        <p>We do not use analytics or ad trackers. Analysis runs entirely on your phone's processor using ML Kit.</p>
+      </div>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-card-content">
+        <span class="privacy-icon">🗑️</span>
+        <h3>One-Tap Delete</h3>
+        <p>Delete your local scan history instantly. We can't recover it for you, because we never had it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg class="site-logo" width="24" height="24" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="7.5" fill="#4A148C"/><defs><clipPath id="shF"><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z"/></clipPath></defs><path d="M17 4L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-4z" fill="white"/><g clip-path="url(#shF)"><rect x="8" y="4" width="9" height="12" fill="#311B6B"/><rect x="17" y="16" width="9" height="12" fill="#311B6B"/></g></svg> SatarkScan
+      <span class="tagline">Be Alert. Be Safe.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="cyber-jagrut.html">Cyber Jagrut</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Use</a></li>
+    </ul>
+    <div class="footer-bottom">
+      Made with <span>❤</span> for a safer digital India &nbsp;·&nbsp; © SatarkScan 2026
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar & Mobile Menu
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// Spotlight Effect for Features Cards
+document.querySelectorAll('.spotlight-container').forEach(container => {
+  container.onmousemove = e => {
+    for(const card of container.getElementsByClassName("feature-card")) {
+      const rect = card.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    }
+  };
+});
+
+// Scroll Reveals
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Number Counters
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const el = e.target; 
+      const target = parseInt(el.dataset.target);
+      const duration = 2000; 
+      const start = performance.now();
+      
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
+        el.textContent = Math.floor(eased * target).toLocaleString();
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+</script>
+</body>
+</html>
