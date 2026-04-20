@@ -795,9 +795,10 @@ function closeMobile() { document.getElementById('mobileMenu').classList.remove(
 const stickyMobile = document.getElementById('stickyMobile');
 const heroSection = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
-  const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
-  const nearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100;
-  stickyMobile.classList.toggle('visible', heroBottom < 0 && !nearBottom);
+  const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+  const pastHero = window.scrollY > heroHeight;
+  const nearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 150;
+  stickyMobile.classList.toggle('visible', pastHero && !nearBottom);
 });
 const featGrid = document.getElementById('featGrid');
 if (featGrid) { featGrid.addEventListener('mousemove', e => { for (const cell of document.querySelectorAll('.feat-cell')) { const rect = cell.getBoundingClientRect(); cell.style.setProperty('--mx', `${e.clientX - rect.left}px`); cell.style.setProperty('--my', `${e.clientY - rect.top}px`); } }); }
