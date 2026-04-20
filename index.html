@@ -114,7 +114,7 @@
     .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--safe); animation: safePulse 2s ease-in-out infinite; box-shadow: 0 0 8px var(--safe); }
     @keyframes safePulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
     .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 em { font-style: normal; color: #a78bfa; background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero h1 em { font-style: normal; color: #a78bfa; } @supports (-webkit-background-clip: text) { .hero h1 em { background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; } }
     .hero-sub { color: rgba(255,255,255,0.5); font-size: 1.08rem; line-height: 1.75; max-width: 480px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
