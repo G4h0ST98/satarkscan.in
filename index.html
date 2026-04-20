@@ -793,11 +793,11 @@ window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', wi
 document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
 function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
 const stickyMobile = document.getElementById('stickyMobile');
-const triggerEl = document.querySelector('.stats-band') || document.querySelector('.what-section');
+const triggerEl = document.querySelector('.what-section');
 window.addEventListener('scroll', () => {
-  const triggerTop = triggerEl ? triggerEl.getBoundingClientRect().top : 9999;
+  const triggerBottom = triggerEl ? triggerEl.getBoundingClientRect().bottom : 9999;
   const nearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 150;
-  stickyMobile.classList.toggle('visible', triggerTop < 0 && !nearBottom);
+  stickyMobile.classList.toggle('visible', triggerBottom < 0 && !nearBottom);
 });
 const featGrid = document.getElementById('featGrid');
 if (featGrid) { featGrid.addEventListener('mousemove', e => { for (const cell of document.querySelectorAll('.feat-cell')) { const rect = cell.getBoundingClientRect(); cell.style.setProperty('--mx', `${e.clientX - rect.left}px`); cell.style.setProperty('--my', `${e.clientY - rect.top}px`); } }); }
