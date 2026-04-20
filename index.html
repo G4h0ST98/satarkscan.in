@@ -114,7 +114,7 @@
     .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--safe); animation: safePulse 2s ease-in-out infinite; box-shadow: 0 0 8px var(--safe); }
     @keyframes safePulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
     .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.04em; color: #fff; }
-    .hero h1 em { font-style: normal; background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero h1 em { font-style: normal; color: #a78bfa; background: linear-gradient(135deg, #fff 20%, #a78bfa 55%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-sub { color: rgba(255,255,255,0.5); font-size: 1.08rem; line-height: 1.75; max-width: 480px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
@@ -185,7 +185,7 @@
     .d-btn-icon.purple { background: rgba(74,20,140,0.08); color: #4A148C; }
     .d-btn-icon.green { background: rgba(46,125,50,0.1); color: #2E7D32; }
     .d-btn-text { font-size: 0.58rem; font-weight: 700; color: #1a1a2e; line-height: 1.2; }
-    .d-btn-sub { font-size: 0.38rem; color: #999; font-weight: 400; }
+    .d-btn-sub { font-size: 0.38rem; color: #999; font-weight: 400; line-height: 1.2; margin-top: 1px; display: block; }
 
     /* STATS CARD — legend removed, spacing tightened */
     .d-stats { background: #fff; margin: 0 10px 6px; padding: 8px 12px 4px; border-radius: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); flex: none !important; overflow: hidden; }
@@ -286,7 +286,7 @@
     .stats-band-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
     .stat-item { position: relative; padding: 1.5rem 1rem; }
     .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: linear-gradient(180deg, transparent, rgba(123,58,236,0.3), transparent); }
-    .stat-num { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; letter-spacing: -0.04em; background: linear-gradient(135deg, #fff 30%, rgba(167,139,250,0.9) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+    .stat-num { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; letter-spacing: -0.04em; color: #a78bfa; background: linear-gradient(135deg, #fff 30%, rgba(167,139,250,0.9) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
     .stat-label { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-top: 0.4rem; letter-spacing: 0.02em; }
 
     /* WHAT IT DOES */
@@ -742,7 +742,7 @@
 <section class="cta-section" id="download">
   <div class="cta-card reveal">
     <div class="section-eyebrow" style="margin-bottom:1rem">Get Protected Today</div>
-    <h2>Ready to scan<br><em style="font-style:normal;background:linear-gradient(135deg,#fff,#a78bfa 50%,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent">safely</em>?</h2>
+    <h2>Ready to scan<br><em style="font-style:normal;color:#a78bfa;background:linear-gradient(135deg,#fff,#a78bfa 50%,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent">safely</em>?</h2>
     <p>Free forever. No ads. No tracking. No servers. Just a smarter way to pay.</p>
     <div class="btn-3d" style="display:inline-flex; opacity:0.85; cursor:default;">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.83 1.5-.4l14 8.5c.5.3.5 1.1 0 1.4l-14 8.5c-.5.4-1.5.4-1.5-.4z"/></svg>
