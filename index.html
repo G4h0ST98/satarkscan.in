@@ -436,9 +436,11 @@
     @media (max-width: 480px) {
       .hero h1 { font-size: 2.8rem; }
       .hero-btns { flex-direction: column; align-items: center; }
-      .btn-3d, .btn-ghost { width: 100%; justify-content: center; }
+      .btn-3d, .btn-ghost { width: 100%; justify-content: center; box-sizing: border-box; }
       .stats-band-inner { grid-template-columns: 1fr 1fr; }
       .phone-frame { width: 220px; height: 468px; }
+      .cta-card .btn-3d { width: 100%; max-width: 100%; box-sizing: border-box; }
+      .mobile-sticky-cta .btn-3d { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.9rem; padding: 0.85rem 1rem; }
     }
   </style>
 </head>
@@ -778,10 +780,10 @@
 </footer>
 
 <div class="mobile-sticky-cta" id="stickyMobile">
-  <a href="#download" class="btn-3d">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Download Free App
-  </a>
+  <div class="btn-3d" style="width:100%;justify-content:center;opacity:0.85;cursor:default;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.83 1.5-.4l14 8.5c.5.3.5 1.1 0 1.4l-14 8.5c-.5.4-1.5.4-1.5-.4z"/></svg>
+    Coming Soon on Play Store
+  </div>
 </div>
 
 <script>
