@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>The Screen Share Scam — Cyber Jagrut | SatarkScan</title>
-  <meta name="description" content="How scammers posing as bank or UPI support ask you to install AnyDesk or TeamViewer, then watch your OTPs and PIN in real time to drain your account.">
-  <link rel="canonical" href="https://satarkscan.in/articles/screen-share-scam.html">
+  <title>The Fake Job Offer UPI Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="How fake work-from-home job offers lure students and job seekers into paying UPI registration fees and security deposits before the recruiter disappears.">
+  <link rel="canonical" href="https://satarkscan.in/articles/job-scam-upi.html">
 
   <meta name="theme-color" content="#060612">
 
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://satarkscan.in/articles/screen-share-scam.html">
-  <meta property="og:title" content="The Screen Share Scam — Cyber Jagrut">
-  <meta property="og:description" content="Fake bank support asks you to install AnyDesk. They watch your OTP in real time and drain your account before you can react.">
+  <meta property="og:url" content="https://satarkscan.in/articles/job-scam-upi.html">
+  <meta property="og:title" content="The Fake Job Offer UPI Scam — Cyber Jagrut">
+  <meta property="og:description" content="Fake WFH jobs asking for a UPI registration fee. Pay once and the recruiter vanishes. Here's how the scam runs.">
   <meta property="og:image" content="https://satarkscan.in/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -22,8 +22,8 @@
   <meta property="og:site_name" content="SatarkScan">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Screen Share Scam — Cyber Jagrut">
-  <meta name="twitter:description" content="Fake bank support asks you to install AnyDesk. They watch your OTP in real time and drain your account.">
+  <meta name="twitter:title" content="The Fake Job Offer UPI Scam — Cyber Jagrut">
+  <meta name="twitter:description" content="Fake WFH jobs asking for a UPI registration fee. Pay once and the recruiter vanishes.">
   <meta name="twitter:image" content="https://satarkscan.in/og-image.png">
   <meta name="twitter:image:alt" content="SatarkScan — India's free UPI QR fraud detector app">
   <meta name="twitter:site" content="@satarkscan">
@@ -57,45 +57,27 @@
     @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2.5rem; text-align: center; font-weight: 700; }
 
-    /* Screen Mirror Animation */
-    .mirror-stage { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
-    .device-box { width: 110px; height: 170px; background: rgba(14,14,31,0.9); border: 2px solid rgba(255,255,255,0.12); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 0.8rem; gap: 0.5rem; position: relative; overflow: hidden; }
-    .device-victim { border-color: rgba(34,211,238,0.35); }
-    .device-scammer { border-color: rgba(239,68,68,0.4); }
-    .device-label { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; padding: 0 0.5rem; text-align: center; }
-    .device-victim .device-label { color: rgba(34,211,238,0.7); }
-    .device-scammer .device-label { color: rgba(239,68,68,0.7); }
-    .device-screen { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.4rem; }
-    .otp-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.3rem 0.5rem; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; }
-    .otp-victim { color: var(--cyan); animation: showOTPv 4s ease-in-out infinite; opacity: 0; }
-    .otp-scammer { color: var(--danger); animation: showOTPs 4s ease-in-out infinite; opacity: 0; animation-delay: 0.6s; }
-    .eye-icon { font-size: 1.2rem; animation: blinkEye 4s ease-in-out infinite; opacity: 0; animation-delay: 0.9s; }
-    .bank-label { font-size: 0.6rem; color: var(--text2); font-family: var(--font-mono); }
-    @keyframes showOTPv {
-      0%, 25% { opacity: 0; }
-      35%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
+    /* Job Scam Chat Animation */
+    .chat-demo { max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.8rem; }
+    .chat-bubble { border-radius: 12px 12px 12px 2px; padding: 0.9rem 1.1rem; font-size: 0.88rem; line-height: 1.5; max-width: 260px; }
+    .chat-inbound { background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.2); color: var(--text); animation: slideRight 7s ease-in-out infinite; opacity: 0; transform: translateX(-30px); }
+    .chat-inbound.d2 { animation-delay: 1.2s; }
+    .chat-inbound.d3 { animation-delay: 2.4s; }
+    .pay-prompt { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 0.9rem 1.2rem; text-align: center; animation: slideRight 7s ease-in-out infinite; opacity: 0; transform: translateX(-30px); animation-delay: 3.6s; }
+    .pay-prompt-label { font-size: 0.8rem; color: var(--danger); font-weight: 700; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .pay-amount-text { font-size: 1.2rem; font-weight: 800; color: #f87171; font-family: var(--font-display); }
+    .gone-msg { text-align: center; padding: 0.7rem; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(239,68,68,0.7); border: 1px dashed rgba(239,68,68,0.3); border-radius: 8px; animation: fadeInGone 7s ease-in-out infinite; opacity: 0; animation-delay: 5s; }
+    @keyframes slideRight {
+      0%, 5% { opacity: 0; transform: translateX(-30px); }
+      15%, 80% { opacity: 1; transform: translateX(0); }
+      92%, 100% { opacity: 0; transform: translateX(30px); }
     }
-    @keyframes showOTPs {
-      0%, 30% { opacity: 0; }
-      42%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
+    @keyframes fadeInGone {
+      0%, 68% { opacity: 0; }
+      78%, 88% { opacity: 1; }
+      96%, 100% { opacity: 0; }
     }
-    @keyframes blinkEye {
-      0%, 30% { opacity: 0; }
-      45%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
-    }
-
-    /* Connection line between devices */
-    .connect-tunnel { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-    .tunnel-line { width: 50px; height: 2px; background: linear-gradient(90deg, rgba(34,211,238,0.4), rgba(239,68,68,0.4)); position: relative; overflow: hidden; }
-    .tunnel-line::after { content: ''; position: absolute; top: -1px; left: -10px; width: 10px; height: 4px; background: rgba(239,68,68,0.9); border-radius: 2px; animation: dataPulse 1.2s linear infinite; }
-    .tunnel-line:nth-child(2)::after { animation-delay: 0.4s; }
-    .tunnel-line:nth-child(3)::after { animation-delay: 0.8s; }
-    @keyframes dataPulse { 0% { left: -10px; } 100% { left: 100%; } }
-    .tunnel-label { font-family: var(--font-mono); font-size: 0.6rem; color: rgba(239,68,68,0.6); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
-    .mirror-caption { text-align: center; margin-top: 1.5rem; font-size: 0.88rem; color: var(--text2); font-family: var(--font-mono); }
+    .tg-header { background: rgba(41,182,246,0.08); border: 1px solid rgba(41,182,246,0.15); border-radius: 10px 10px 0 0; padding: 0.6rem 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: rgba(41,182,246,0.8); margin-bottom: -1px; display: flex; align-items: center; gap: 0.5rem; }
 
     /* Typography */
     .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
@@ -116,18 +98,12 @@
     .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
     .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
-
-    @media(max-width: 768px) {
-      .mirror-stage { gap: 1rem; }
-      .device-box { width: 90px; height: 145px; }
-      .tunnel-line { width: 36px; }
-    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "The Screen Share Scam",
+    "headline": "The Fake Job Offer UPI Scam",
     "image": "https://satarkscan.in/og-image.png",
     "author": {
       "@type": "Organization",
@@ -176,74 +152,59 @@
     <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
     <div class="reveal reveal-delay-1">
       <div class="article-tag">HIGH RISK</div>
-      <h1>The Screen Share Scam</h1>
+      <h1>The Fake Job Offer UPI Scam</h1>
     </div>
     <div class="article-meta-top reveal reveal-delay-2">
-      <span>📖 5 min read</span>
+      <span>📖 4 min read</span>
       <span>🛡 SatarkScan Awareness</span>
     </div>
   </header>
 
   <div class="scenario-box reveal">
-    <div class="scenario-title">⚠ Your screen. Their eyes. Your money. Gone.</div>
-    <div class="mirror-stage">
-      <div class="device-box device-victim">
-        <div class="device-label">Your Phone</div>
-        <div class="device-screen">
-          <div class="bank-label">SBI OTP</div>
-          <div class="otp-box otp-victim">7 4 3 2 1 9</div>
-          <div class="bank-label" style="margin-top:0.3rem">UPI PIN ••••</div>
-        </div>
+    <div class="scenario-title">⚠ The message that costs you money</div>
+    <div class="chat-demo">
+      <div class="tg-header">📣 WFH Jobs India — Telegram</div>
+      <div class="chat-bubble chat-inbound">👋 Hi! We have a data entry opening — ₹15,000/month, work from home. Interested?</div>
+      <div class="chat-bubble chat-inbound d2">No experience needed. Just need a smartphone and 3 hours/day.</div>
+      <div class="chat-bubble chat-inbound d3">One-time registration fee to secure your slot:</div>
+      <div class="pay-prompt">
+        <div class="pay-prompt-label">Pay via UPI to register</div>
+        <div class="pay-amount-text">₹500</div>
       </div>
-      <div class="connect-tunnel">
-        <div class="tunnel-label">AnyDesk</div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-label">live mirror</div>
-      </div>
-      <div class="device-box device-scammer">
-        <div class="device-label">Scammer PC</div>
-        <div class="device-screen">
-          <div class="bank-label" style="color:rgba(239,68,68,0.6)">Reading OTP</div>
-          <div class="otp-box otp-scammer">7 4 3 2 1 9</div>
-          <div class="eye-icon">👁</div>
-        </div>
-      </div>
+      <div class="gone-msg">🚫 This contact is no longer available</div>
     </div>
-    <p class="mirror-caption">Every character you type appears on their screen simultaneously.</p>
   </div>
 
   <div class="article-body">
     <h2 class="reveal">The real scenario</h2>
     <div class="scenario-narrative reveal">
-      Suresh, a retired government employee in Bhopal, Googled "SBI UPI customer care number" when his transaction kept failing. The top result showed a number that looked official. He called it. A polite, professional-sounding man answered and said: "Sir, there is a technical issue on your account. I can fix it remotely — please install AnyDesk from the Play Store, it takes 2 minutes." Suresh installed the app. The agent gave him a nine-digit code to enter. Within 90 seconds of granting access, Suresh watched helplessly as his phone navigated on its own — opening his SBI YONO app, adding a new payee, and initiating a ₹2.2 lakh transfer. He could not stop it. The call disconnected. The number was unreachable.
+      Aditya, a second-year B.Com student in Jaipur, got a Telegram message about a data entry job offering ₹15,000 a month with no experience required. The "recruiter" had a professional profile photo and had already sent him a PDF with the company's logo. After a short chat interview, Aditya was told he had been selected — but needed to pay ₹500 as a refundable "registration fee" to receive his work portal login. He scanned the QR code and paid. The recruiter said login credentials would arrive in 24 hours. Two days later, the Telegram account no longer existed. ₹500 gone, no job, no refund.
     </div>
 
-    <h2 class="reveal">How does screen sharing become a weapon?</h2>
+    <h2 class="reveal">How do they build the illusion?</h2>
     <div class="reveal">
-      <p>Remote access apps like AnyDesk, TeamViewer, and QuickSupport are legitimate tools used by IT support teams. But in the wrong hands, they give the scammer full, real-time control of your phone — every tap you make, every OTP that appears on screen, every digit of your PIN as you enter it.</p>
-      <p>The trap begins with a phone call. Scammers buy or scrape phone numbers from data leaks and call people who are likely to have banking issues — senior citizens, small business owners, and people who have recently complained on public forums. Alternatively, they pay for Google Ads or SEO to ensure their fake "customer care" number appears near the top of search results for terms like "PhonePe helpline," "SBI UPI problem," or "Paytm KYC support."</p>
-      <p>Once the victim installs the remote access app and shares the session code, the scammer sees a live mirror of the phone. They wait for the victim to open their banking app and then either watch credentials being entered or take direct control of the device. The entire fraud — from call to empty account — often takes under ten minutes.</p>
+      <p>This scam targets students, homemakers, and recent graduates — anyone who is actively searching for work and is motivated enough to take action quickly. Fraudsters post in large WhatsApp groups, Telegram channels, and Facebook job boards with listings that are deliberately vague but irresistible: "₹800/day, just 2 hours work, no qualification needed."</p>
+      <p>The scammer's process is designed to feel legitimate. They send a formal-looking offer letter with a stolen company logo. They conduct a brief "interview" over Telegram or WhatsApp voice call. They create urgency — "only 3 slots left in your city." The "registration fee" is framed as refundable, or as payment for a "work kit," "ID card processing," or "background check." All of these are fabrications.</p>
+      <p>The amounts are deliberately small — ₹299, ₹500, ₹999 — because victims are less likely to involve police over small sums and more likely to dismiss it as a lesson learned. But each scammer runs this with hundreds of victims simultaneously, making lakhs per day with no overhead.</p>
     </div>
 
     <h2 class="reveal">🚩 Red flags to watch for</h2>
     <div class="red-flags reveal">
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>Any "support agent" asks you to install AnyDesk, TeamViewer, QuickSupport, or any other remote access or screen-sharing app. No legitimate bank or UPI support team ever requests this.</div>
+        <div>Any job that requires an upfront payment — registration fee, security deposit, ID processing, work kit — before you receive a single rupee of salary.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>The customer care number you called was found via Google Search rather than directly on the bank's official website or the back of your debit card.</div>
+        <div>The recruiter contacts you on Telegram, WhatsApp, or Instagram without you having applied anywhere. Legitimate HR teams use email or official portals like Naukri, LinkedIn, or Indeed.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>The agent asks you to open your banking or UPI app while you're on the call, claiming they need to "check something" or "run a diagnostic."</div>
+        <div>The job description is deliberately vague: "online work," "data entry," "social media tasks" — no company name, no clear role, no employment contract offered upfront.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>You receive OTP messages you did not request during the call — this means the scammer is already initiating transactions using information they've gathered.</div>
+        <div>Pressure to pay immediately — "offer expires today," "only 2 slots left," "your selection will be cancelled if you don't confirm within 1 hour."</div>
       </div>
     </div>
 
@@ -251,19 +212,19 @@
     <div class="green-tips reveal">
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Never install apps on instruction:</strong> If anyone — regardless of how official they sound — asks you to install a new app while on a call, hang up immediately. This is the single most reliable sign of a scam.</div>
+        <div><strong>The golden rule:</strong> Legitimate employers pay you. They never ask you to pay them. No real job — anywhere, ever — requires an upfront fee before you start working.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Get numbers from official sources only:</strong> Bank helpline numbers are printed on the back of your debit card and on the bank's official website. Do not use numbers found in Google search results — these can be paid ads from scammers.</div>
+        <div><strong>Verify the company:</strong> Google the company name + "jobs" + "fraud." Search the exact UPI ID the scammer gives you through SatarkScan. Look up the company on the MCA portal (mca.gov.in) to confirm it's registered.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>If you've granted access, act immediately:</strong> Uninstall the remote access app instantly. Put your phone in airplane mode. Call your bank's official helpline to freeze your account. File a complaint at cybercrime.gov.in within the hour.</div>
+        <div><strong>Ask for an official email:</strong> Request that all communication happen over a company email address (not Gmail, Yahoo, or Hotmail). Scammers cannot produce this.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Tell elderly family members:</strong> Senior citizens are disproportionately targeted by this scam. Explain to your parents and grandparents that banks will never call them and ask for app installations. Show them this article.</div>
+        <div><strong>Report it:</strong> File a complaint at cybercrime.gov.in or call the National Cyber Crime helpline 1930. Even ₹500 frauds are worth reporting — your report contributes to catching operations that are defrauding thousands of people simultaneously.</div>
       </div>
     </div>
 
@@ -317,7 +278,7 @@ try {
 
 function shareArticle(platform){
   const url = window.location.href;
-  const text = 'Read this: The Screen Share Scam — how fake support agents drain your account via AnyDesk | SatarkScan';
+  const text = 'Read this: The Fake Job Offer UPI Scam — why you should never pay to work | SatarkScan';
   if(platform === 'whatsapp') {
     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
   } else if (platform === 'twitter') {

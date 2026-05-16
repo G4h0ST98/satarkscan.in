@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>The Screen Share Scam — Cyber Jagrut | SatarkScan</title>
-  <meta name="description" content="How scammers posing as bank or UPI support ask you to install AnyDesk or TeamViewer, then watch your OTPs and PIN in real time to drain your account.">
-  <link rel="canonical" href="https://satarkscan.in/articles/screen-share-scam.html">
+  <title>The Social Media UPI Scam — Cyber Jagrut | SatarkScan</title>
+  <meta name="description" content="Fake Instagram and Facebook giveaways that ask you to 'send ₹1 to verify your UPI' — then drain your account. Learn how these scams work and how to avoid them.">
+  <link rel="canonical" href="https://satarkscan.in/articles/social-media-upi-scam.html">
 
   <meta name="theme-color" content="#060612">
 
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://satarkscan.in/articles/screen-share-scam.html">
-  <meta property="og:title" content="The Screen Share Scam — Cyber Jagrut">
-  <meta property="og:description" content="Fake bank support asks you to install AnyDesk. They watch your OTP in real time and drain your account before you can react.">
+  <meta property="og:url" content="https://satarkscan.in/articles/social-media-upi-scam.html">
+  <meta property="og:title" content="The Social Media UPI Scam — Cyber Jagrut">
+  <meta property="og:description" content="Fake Instagram giveaways that ask you to send ₹1 to verify your UPI — then drain your account. Here's the full playbook.">
   <meta property="og:image" content="https://satarkscan.in/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -22,8 +22,8 @@
   <meta property="og:site_name" content="SatarkScan">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Screen Share Scam — Cyber Jagrut">
-  <meta name="twitter:description" content="Fake bank support asks you to install AnyDesk. They watch your OTP in real time and drain your account.">
+  <meta name="twitter:title" content="The Social Media UPI Scam — Cyber Jagrut">
+  <meta name="twitter:description" content="Fake Instagram giveaways that ask you to send ₹1 to verify your UPI — then drain your account.">
   <meta name="twitter:image" content="https://satarkscan.in/og-image.png">
   <meta name="twitter:image:alt" content="SatarkScan — India's free UPI QR fraud detector app">
   <meta name="twitter:site" content="@satarkscan">
@@ -57,45 +57,30 @@
     @keyframes warnScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     .scenario-title { font-family: var(--font-mono); font-size: .85rem; color: var(--danger); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2.5rem; text-align: center; font-weight: 700; }
 
-    /* Screen Mirror Animation */
-    .mirror-stage { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
-    .device-box { width: 110px; height: 170px; background: rgba(14,14,31,0.9); border: 2px solid rgba(255,255,255,0.12); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 0.8rem; gap: 0.5rem; position: relative; overflow: hidden; }
-    .device-victim { border-color: rgba(34,211,238,0.35); }
-    .device-scammer { border-color: rgba(239,68,68,0.4); }
-    .device-label { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; padding: 0 0.5rem; text-align: center; }
-    .device-victim .device-label { color: rgba(34,211,238,0.7); }
-    .device-scammer .device-label { color: rgba(239,68,68,0.7); }
-    .device-screen { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.4rem; }
-    .otp-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.3rem 0.5rem; font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; }
-    .otp-victim { color: var(--cyan); animation: showOTPv 4s ease-in-out infinite; opacity: 0; }
-    .otp-scammer { color: var(--danger); animation: showOTPs 4s ease-in-out infinite; opacity: 0; animation-delay: 0.6s; }
-    .eye-icon { font-size: 1.2rem; animation: blinkEye 4s ease-in-out infinite; opacity: 0; animation-delay: 0.9s; }
-    .bank-label { font-size: 0.6rem; color: var(--text2); font-family: var(--font-mono); }
-    @keyframes showOTPv {
-      0%, 25% { opacity: 0; }
-      35%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
+    /* Social Media DM Animation */
+    .insta-demo { max-width: 290px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.9rem; }
+    .insta-notif { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 0.9rem 1rem; display: flex; gap: 0.8rem; align-items: flex-start; animation: dropIn 7s ease-in-out infinite; opacity: 0; transform: translateY(-18px); }
+    .insta-notif.d2 { animation-delay: 1.4s; }
+    .insta-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.2); }
+    .insta-content { flex: 1; }
+    .insta-sender { font-size: 0.78rem; font-weight: 700; color: var(--text); font-family: var(--font-mono); }
+    .insta-sender .badge { display: inline-block; width: 12px; height: 12px; background: #3d9ae8; border-radius: 50%; margin-left: 4px; font-size: 8px; line-height: 12px; text-align: center; color: #fff; }
+    .insta-text { font-size: 0.82rem; color: var(--text2); margin-top: 0.25rem; line-height: 1.5; }
+    .verify-card { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.28); border-radius: 12px; padding: 1rem 1.2rem; text-align: center; animation: dropIn 7s ease-in-out infinite; opacity: 0; transform: translateY(-18px); animation-delay: 2.8s; }
+    .verify-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--danger); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; font-weight: 700; }
+    .verify-amount { font-size: 1.4rem; font-weight: 800; color: #f87171; font-family: var(--font-display); }
+    .verify-sub { font-size: 0.75rem; color: var(--text2); margin-top: 0.2rem; }
+    .drain-row { display: flex; justify-content: center; gap: 0.4rem; animation: drainAnim 7s ease-in-out infinite; opacity: 0; animation-delay: 4.4s; font-size: 1.4rem; }
+    @keyframes dropIn {
+      0%, 5% { opacity: 0; transform: translateY(-18px); }
+      15%, 75% { opacity: 1; transform: translateY(0); }
+      88%, 100% { opacity: 0; transform: translateY(12px); }
     }
-    @keyframes showOTPs {
-      0%, 30% { opacity: 0; }
-      42%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
+    @keyframes drainAnim {
+      0%, 60% { opacity: 0; transform: scale(0.8); }
+      68%, 85% { opacity: 1; transform: scale(1); }
+      95%, 100% { opacity: 0; transform: scale(0.7) translateY(10px); }
     }
-    @keyframes blinkEye {
-      0%, 30% { opacity: 0; }
-      45%, 75% { opacity: 1; }
-      85%, 100% { opacity: 0; }
-    }
-
-    /* Connection line between devices */
-    .connect-tunnel { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-    .tunnel-line { width: 50px; height: 2px; background: linear-gradient(90deg, rgba(34,211,238,0.4), rgba(239,68,68,0.4)); position: relative; overflow: hidden; }
-    .tunnel-line::after { content: ''; position: absolute; top: -1px; left: -10px; width: 10px; height: 4px; background: rgba(239,68,68,0.9); border-radius: 2px; animation: dataPulse 1.2s linear infinite; }
-    .tunnel-line:nth-child(2)::after { animation-delay: 0.4s; }
-    .tunnel-line:nth-child(3)::after { animation-delay: 0.8s; }
-    @keyframes dataPulse { 0% { left: -10px; } 100% { left: 100%; } }
-    .tunnel-label { font-family: var(--font-mono); font-size: 0.6rem; color: rgba(239,68,68,0.6); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
-    .mirror-caption { text-align: center; margin-top: 1.5rem; font-size: 0.88rem; color: var(--text2); font-family: var(--font-mono); }
 
     /* Typography */
     .article-body { max-width: 740px; margin: 0 auto; padding: 0 2rem 6rem; }
@@ -116,18 +101,12 @@
     .share-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .share-btn { background: var(--card); border: 1px solid rgba(123,58,236,0.3); color: var(--text); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
     .share-btn:hover { background: rgba(123,58,236,0.1); border-color: var(--primary); box-shadow: 0 0 20px var(--glow); transform: translateY(-2px); }
-
-    @media(max-width: 768px) {
-      .mirror-stage { gap: 1rem; }
-      .device-box { width: 90px; height: 145px; }
-      .tunnel-line { width: 36px; }
-    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "The Screen Share Scam",
+    "headline": "The Social Media UPI Scam",
     "image": "https://satarkscan.in/og-image.png",
     "author": {
       "@type": "Organization",
@@ -176,74 +155,70 @@
     <a href="../cyber-jagrut.html" class="back-link reveal">← Back to Threat Hub</a>
     <div class="reveal reveal-delay-1">
       <div class="article-tag">HIGH RISK</div>
-      <h1>The Screen Share Scam</h1>
+      <h1>The Social Media UPI Scam</h1>
     </div>
     <div class="article-meta-top reveal reveal-delay-2">
-      <span>📖 5 min read</span>
+      <span>📖 4 min read</span>
       <span>🛡 SatarkScan Awareness</span>
     </div>
   </header>
 
   <div class="scenario-box reveal">
-    <div class="scenario-title">⚠ Your screen. Their eyes. Your money. Gone.</div>
-    <div class="mirror-stage">
-      <div class="device-box device-victim">
-        <div class="device-label">Your Phone</div>
-        <div class="device-screen">
-          <div class="bank-label">SBI OTP</div>
-          <div class="otp-box otp-victim">7 4 3 2 1 9</div>
-          <div class="bank-label" style="margin-top:0.3rem">UPI PIN ••••</div>
+    <div class="scenario-title">⚠ A DM that could empty your account</div>
+    <div class="insta-demo">
+      <div class="insta-notif">
+        <div class="insta-avatar">🎁</div>
+        <div class="insta-content">
+          <div class="insta-sender">@flipkart.official.in <span class="badge">✓</span></div>
+          <div class="insta-text">Congratulations! You've been selected for our Diwali giveaway — ₹5,000 prize! DM us your UPI to claim.</div>
         </div>
       </div>
-      <div class="connect-tunnel">
-        <div class="tunnel-label">AnyDesk</div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-line"></div>
-        <div class="tunnel-label">live mirror</div>
-      </div>
-      <div class="device-box device-scammer">
-        <div class="device-label">Scammer PC</div>
-        <div class="device-screen">
-          <div class="bank-label" style="color:rgba(239,68,68,0.6)">Reading OTP</div>
-          <div class="otp-box otp-scammer">7 4 3 2 1 9</div>
-          <div class="eye-icon">👁</div>
+      <div class="insta-notif d2">
+        <div class="insta-avatar">🎁</div>
+        <div class="insta-content">
+          <div class="insta-sender">@flipkart.official.in</div>
+          <div class="insta-text">To verify your UPI and release the prize amount, please send a nominal ₹1 as confirmation:</div>
         </div>
       </div>
+      <div class="verify-card">
+        <div class="verify-label">UPI Verification Required</div>
+        <div class="verify-amount">₹1 → ₹5,000</div>
+        <div class="verify-sub">Pay to verify — prize released instantly</div>
+      </div>
+      <div class="drain-row">💸💸💸</div>
     </div>
-    <p class="mirror-caption">Every character you type appears on their screen simultaneously.</p>
   </div>
 
   <div class="article-body">
     <h2 class="reveal">The real scenario</h2>
     <div class="scenario-narrative reveal">
-      Suresh, a retired government employee in Bhopal, Googled "SBI UPI customer care number" when his transaction kept failing. The top result showed a number that looked official. He called it. A polite, professional-sounding man answered and said: "Sir, there is a technical issue on your account. I can fix it remotely — please install AnyDesk from the Play Store, it takes 2 minutes." Suresh installed the app. The agent gave him a nine-digit code to enter. Within 90 seconds of granting access, Suresh watched helplessly as his phone navigated on its own — opening his SBI YONO app, adding a new payee, and initiating a ₹2.2 lakh transfer. He could not stop it. The call disconnected. The number was unreachable.
+      Shreya, a college student in Hyderabad, saw a post from an Instagram account that looked exactly like the official Flipkart page — blue tick, the right logo, thousands of followers. The post said: "Diwali Mega Giveaway — 100 winners get ₹5,000 each. Tag a friend and DM us your UPI." She DMed them. They told her she was a winner and asked her to send ₹1 to "verify your UPI account is active." She paid. They then said the prize transfer needed a ₹49 "processing fee." She paid that too. Then ₹199 for "tax clearance." Before she realised what was happening, she had paid ₹849 and received nothing. The account had 47,000 followers — all bought.
     </div>
 
-    <h2 class="reveal">How does screen sharing become a weapon?</h2>
+    <h2 class="reveal">How do fake giveaways work?</h2>
     <div class="reveal">
-      <p>Remote access apps like AnyDesk, TeamViewer, and QuickSupport are legitimate tools used by IT support teams. But in the wrong hands, they give the scammer full, real-time control of your phone — every tap you make, every OTP that appears on screen, every digit of your PIN as you enter it.</p>
-      <p>The trap begins with a phone call. Scammers buy or scrape phone numbers from data leaks and call people who are likely to have banking issues — senior citizens, small business owners, and people who have recently complained on public forums. Alternatively, they pay for Google Ads or SEO to ensure their fake "customer care" number appears near the top of search results for terms like "PhonePe helpline," "SBI UPI problem," or "Paytm KYC support."</p>
-      <p>Once the victim installs the remote access app and shares the session code, the scammer sees a live mirror of the phone. They wait for the victim to open their banking app and then either watch credentials being entered or take direct control of the device. The entire fraud — from call to empty account — often takes under ten minutes.</p>
+      <p>The social media giveaway scam is one of the fastest-growing UPI frauds in India. Scammers create Instagram, Facebook, or YouTube accounts that closely mimic genuine brand pages. They buy thousands of followers and likes cheaply, copy the real brand's logo, bio, and post style, and sometimes even purchase a blue tick through compromised Meta accounts. To a casual viewer, the page looks completely legitimate.</p>
+      <p>The "₹1 to verify" framing is psychologically clever. One rupee feels negligible — it's barely a cost. But handing over your UPI ID and proving you're willing to transact on instruction is exactly what the scammer needs. Once you've sent ₹1, they escalate: processing fee, GST clearance, bank transfer fee, each amount slightly larger than the last. This is called a confidence trick, or "pig butchering" in fraud terminology — each small payment builds your commitment to the imaginary prize.</p>
+      <p>In more sophisticated variants, the scammer sends you a Collect Request (not a send prompt) for a "₹1 verification." If you approve it without reading, you may actually be approving a much larger amount — the UPI confirmation screen shows the full amount but scammers hope victims approve quickly on mobile without reading carefully.</p>
     </div>
 
     <h2 class="reveal">🚩 Red flags to watch for</h2>
     <div class="red-flags reveal">
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>Any "support agent" asks you to install AnyDesk, TeamViewer, QuickSupport, or any other remote access or screen-sharing app. No legitimate bank or UPI support team ever requests this.</div>
+        <div>Any prize, giveaway, or cashback that requires you to first send any amount of money — ₹1, ₹10, or ₹99 — before receiving your prize. Real giveaways never ask you to pay first.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>The customer care number you called was found via Google Search rather than directly on the bank's official website or the back of your debit card.</div>
+        <div>The brand account contacts you via DM — real brands run giveaways publicly on their verified page, not through private messages.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>The agent asks you to open your banking or UPI app while you're on the call, claiming they need to "check something" or "run a diagnostic."</div>
+        <div>The account has a blue tick but the username contains extra dots, underscores, or words like ".official", ".india", ".support" that the real brand does not use.</div>
       </div>
       <div class="info-card danger">
         <span class="icon">🚩</span>
-        <div>You receive OTP messages you did not request during the call — this means the scammer is already initiating transactions using information they've gathered.</div>
+        <div>A collect request arrives immediately after you share your UPI ID — always read the full amount before approving any collect request.</div>
       </div>
     </div>
 
@@ -251,19 +226,19 @@
     <div class="green-tips reveal">
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Never install apps on instruction:</strong> If anyone — regardless of how official they sound — asks you to install a new app while on a call, hang up immediately. This is the single most reliable sign of a scam.</div>
+        <div><strong>Verify the account:</strong> Go to the official brand's actual website and look for their verified social media links. Do not assume a blue tick equals legitimacy — Meta's verification system has been compromised repeatedly.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Get numbers from official sources only:</strong> Bank helpline numbers are printed on the back of your debit card and on the bank's official website. Do not use numbers found in Google search results — these can be paid ads from scammers.</div>
+        <div><strong>Never share your UPI ID in DMs:</strong> Your UPI ID by itself is not dangerous to share, but sharing it with scammers opens you to collect requests and impersonation attacks. Keep it to yourself.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>If you've granted access, act immediately:</strong> Uninstall the remote access app instantly. Put your phone in airplane mode. Call your bank's official helpline to freeze your account. File a complaint at cybercrime.gov.in within the hour.</div>
+        <div><strong>Read collect requests carefully:</strong> Before approving any UPI collect request, read the full amount and the requester's VPA. If you did not initiate a transaction, decline it. A ₹1 approval button sometimes hides a ₹10,000 transaction.</div>
       </div>
       <div class="info-card safe">
         <span class="icon">✅</span>
-        <div><strong>Tell elderly family members:</strong> Senior citizens are disproportionately targeted by this scam. Explain to your parents and grandparents that banks will never call them and ask for app installations. Show them this article.</div>
+        <div><strong>Report fake pages:</strong> Use the "Report" button on Instagram or Facebook immediately when you spot a fake brand account. This helps protect others and gets the account removed faster.</div>
       </div>
     </div>
 
@@ -317,7 +292,7 @@ try {
 
 function shareArticle(platform){
   const url = window.location.href;
-  const text = 'Read this: The Screen Share Scam — how fake support agents drain your account via AnyDesk | SatarkScan';
+  const text = 'Read this: The Social Media UPI Scam — fake giveaways that drain your account | SatarkScan';
   if(platform === 'whatsapp') {
     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
   } else if (platform === 'twitter') {
