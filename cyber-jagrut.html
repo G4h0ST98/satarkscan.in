@@ -81,6 +81,36 @@
         "@type": "Article",
         "name": "Fake UPI Apps — Cloned PhonePe & GPay",
         "url": "https://satarkscan.in/articles/fake-upi-app.html"
+      },
+      {
+        "@type": "Article",
+        "name": "How to Report UPI Fraud in India",
+        "url": "https://satarkscan.in/articles/report-upi-fraud.html"
+      },
+      {
+        "@type": "Article",
+        "name": "The Fake Payment Screenshot Scam",
+        "url": "https://satarkscan.in/articles/fake-payment-screenshot.html"
+      },
+      {
+        "@type": "Article",
+        "name": "The SIM Swap Scam",
+        "url": "https://satarkscan.in/articles/sim-swap-scam.html"
+      },
+      {
+        "@type": "Article",
+        "name": "The Fake Job UPI Scam",
+        "url": "https://satarkscan.in/articles/job-scam-upi.html"
+      },
+      {
+        "@type": "Article",
+        "name": "The VPA Impersonation Scam",
+        "url": "https://satarkscan.in/articles/vpa-impersonation.html"
+      },
+      {
+        "@type": "Article",
+        "name": "The Social Media UPI Scam",
+        "url": "https://satarkscan.in/articles/social-media-upi-scam.html"
       }
     ]
   }
@@ -209,6 +239,87 @@ html{scroll-behavior:smooth}a{color:inherit;text-decoration:none}
 .vis-amt-num.danger span::after{content:'';position:absolute;inset:-4px;border-radius:4px;border:1.5px solid var(--danger);opacity:0;animation:visAmtBurst 2s infinite}
 @keyframes visAmtBurst{0%,70%{opacity:0;transform:scale(1)}75%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.4)}}
 .vis-amt-arrow{font-size:1.5rem;color:var(--danger);font-weight:700;opacity:0.6}
+
+/* 8. Fake Payment Screenshot visual */
+.vis-fakescreenshot{display:flex;align-items:center;justify-content:center;height:100%;width:100%}
+.vis-fs-phone{width:125px;background:rgba(6,6,18,0.9);border:2px solid rgba(139,92,246,0.5);border-radius:14px;overflow:hidden;box-shadow:0 0 20px rgba(139,92,246,0.15)}
+.vis-fs-topbar{background:#3730a3;padding:.4rem .7rem;display:flex;align-items:center}
+.vis-fs-logo{font-size:.6rem;font-weight:700;color:#fff;font-family:var(--font-display)}
+.vis-fs-body{padding:.75rem .6rem;text-align:center;position:relative;min-height:88px}
+.vis-fs-success{display:flex;flex-direction:column;align-items:center;gap:.3rem;animation:fsSuccess 4s infinite}
+.vis-fs-fail{position:absolute;inset:0;padding:.75rem .6rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;background:rgba(239,68,68,0.05);animation:fsFail 4s infinite;opacity:0}
+.vis-fs-tick{font-size:1.4rem}
+.vis-fs-paid{font-size:.65rem;font-weight:800;color:#10b981;font-family:var(--font-display)}
+.vis-fs-amt{font-size:.8rem;font-weight:700;font-family:var(--font-mono);color:var(--text)}
+.vis-fs-glitch{position:absolute;top:38%;left:0;width:100%;height:2px;background:var(--danger);opacity:0;animation:fsGlitch 4s infinite}
+.vis-fs-x{font-size:1.4rem}
+.vis-fs-fake{font-size:.65rem;font-weight:800;color:var(--danger);font-family:var(--font-display)}
+@keyframes fsSuccess{0%,35%{opacity:1}45%,100%{opacity:0}}
+@keyframes fsFail{0%,43%{opacity:0}52%,85%{opacity:1}95%,100%{opacity:0}}
+@keyframes fsGlitch{0%,38%{opacity:0;transform:scaleX(0)}41%{opacity:1;transform:scaleX(1)}43%{opacity:0}100%{opacity:0}}
+
+/* 9. SIM Swap visual */
+.vis-simswap{display:flex;align-items:center;justify-content:center;gap:1.2rem;height:100%;width:100%}
+.vis-sw-device{display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.vis-sw-name{font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.05em}
+.vis-sw-name.victim{color:var(--cyan)}
+.vis-sw-name.scammer{color:var(--danger)}
+.vis-sw-bars{display:flex;align-items:flex-end;gap:3px;height:28px}
+.vis-sw-bar{width:5px;border-radius:2px 2px 0 0}
+.victim-bars .vis-sw-bar:nth-child(1){height:8px;background:var(--cyan);animation:swLoseBar 5s 0s infinite}
+.victim-bars .vis-sw-bar:nth-child(2){height:14px;background:var(--cyan);animation:swLoseBar 5s .3s infinite}
+.victim-bars .vis-sw-bar:nth-child(3){height:21px;background:var(--cyan);animation:swLoseBar 5s .9s infinite}
+.victim-bars .vis-sw-bar:nth-child(4){height:28px;background:var(--cyan);animation:swLoseBar 5s 1.5s infinite}
+.scammer-bars .vis-sw-bar{background:rgba(100,100,120,0.3)}
+.scammer-bars .vis-sw-bar:nth-child(1){height:8px;animation:swGainBar 5s 2.4s infinite}
+.scammer-bars .vis-sw-bar:nth-child(2){height:14px;animation:swGainBar 5s 2.9s infinite}
+.scammer-bars .vis-sw-bar:nth-child(3){height:21px;animation:swGainBar 5s 3.4s infinite}
+.scammer-bars .vis-sw-bar:nth-child(4){height:28px;animation:swGainBar 5s 3.9s infinite}
+@keyframes swLoseBar{0%,40%{background:var(--cyan);opacity:1}65%,100%{background:rgba(100,100,120,0.25);opacity:.4}}
+@keyframes swGainBar{0%,50%{background:rgba(100,100,120,0.25);opacity:.4}70%,100%{background:var(--danger);opacity:1;box-shadow:0 0 8px rgba(239,68,68,0.5)}}
+.vis-sw-status{font-family:var(--font-mono);font-size:.5rem;font-weight:700;padding:.15rem .35rem;border-radius:3px;text-align:center;white-space:nowrap}
+.vis-sw-status.no-signal{background:rgba(239,68,68,0.15);color:var(--danger);border:1px solid rgba(239,68,68,0.3);animation:swBlinkNo 1s infinite}
+.vis-sw-status.live{background:rgba(239,68,68,0.1);color:var(--danger);border:1px solid rgba(239,68,68,0.2)}
+@keyframes swBlinkNo{0%,100%{opacity:1}50%{opacity:.1}}
+.vis-sw-divider{width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(239,68,68,0.4),transparent)}
+
+/* 10. Job Scam UPI visual */
+.vis-jobscam{display:flex;align-items:center;justify-content:center;height:100%;width:100%;padding:0 .8rem}
+.vis-jb-chat{width:175px;display:flex;flex-direction:column;gap:.35rem}
+.vis-jb-bubble{background:rgba(10,10,24,0.85);border-radius:10px;padding:.4rem .6rem;font-size:.58rem;font-family:var(--font-mono);align-self:flex-start;max-width:95%}
+.vis-jb-bubble.them{border:1px solid rgba(34,211,238,0.2);color:var(--text2)}
+.vis-jb-bubble.pay{border:1px solid rgba(239,68,68,0.4);color:var(--danger);animation:jbPayPulse 2s infinite}
+.vis-jb-bubble.gone{border:1px solid rgba(100,100,120,0.15);color:rgba(100,100,120,0.5);font-style:italic}
+.vis-jb-sender{font-size:.48rem;color:var(--cyan);font-weight:700;margin-bottom:.1rem;display:block}
+@keyframes jbPayPulse{0%,100%{box-shadow:none}50%{box-shadow:0 0 10px rgba(239,68,68,0.3)}}
+
+/* 11. VPA Impersonation visual */
+.vis-vpa{display:flex;align-items:center;justify-content:center;height:100%;width:100%}
+.vis-vpa-box{width:200px;display:flex;flex-direction:column;gap:.55rem}
+.vis-vpa-row{background:rgba(6,6,18,0.85);border-radius:8px;padding:.5rem .7rem;display:flex;align-items:center;justify-content:space-between;gap:.4rem}
+.vis-vpa-row.real{border:1px solid rgba(16,185,129,0.3)}
+.vis-vpa-row.fake{border:1px solid rgba(239,68,68,0.4)}
+.vis-vpa-id{font-family:var(--font-mono);font-size:.56rem;color:var(--text2);flex:1;word-break:break-all}
+.vis-vpa-id .vok{color:#10b981}
+.vis-vpa-id .vbad{color:var(--danger);font-weight:700;display:inline-block;animation:vpaBad 1.4s infinite}
+@keyframes vpaBad{0%,100%{transform:scale(1)}50%{transform:scale(1.5);text-shadow:0 0 8px rgba(239,68,68,0.8)}}
+.vis-vpa-tag{font-size:.44rem;font-weight:700;font-family:var(--font-mono);padding:.12rem .3rem;border-radius:3px;white-space:nowrap;flex-shrink:0}
+.vis-vpa-tag.ok{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+.vis-vpa-tag.bad{background:rgba(239,68,68,0.15);color:var(--danger);border:1px solid rgba(239,68,68,0.3)}
+
+/* 12. Social Media UPI Scam visual */
+.vis-socialmedia{display:flex;align-items:center;justify-content:center;height:100%;width:100%;padding:0 .5rem}
+.vis-sm-feed{width:185px;display:flex;flex-direction:column;gap:.4rem}
+.vis-sm-post{background:rgba(6,6,18,0.9);border:1px solid rgba(139,92,246,0.2);border-radius:8px;padding:.5rem .6rem}
+.vis-sm-header{display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem}
+.vis-sm-avatar{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0}
+.vis-sm-name{font-size:.55rem;font-weight:700;font-family:var(--font-display);color:var(--text)}
+.vis-sm-verified{color:#3b82f6;font-size:.5rem;margin-left:.1rem}
+.vis-sm-caption{font-size:.53rem;color:var(--text2);line-height:1.4}
+.vis-sm-cta{background:var(--danger);color:#fff;border-radius:4px;padding:.18rem .35rem;font-size:.5rem;font-weight:700;font-family:var(--font-mono);margin-top:.2rem;display:inline-block;animation:smCtaPulse 2s infinite}
+@keyframes smCtaPulse{0%,100%{box-shadow:none}50%{box-shadow:0 0 10px rgba(239,68,68,0.5)}}
+.vis-sm-drain{text-align:center;font-family:var(--font-mono);font-size:.55rem;color:var(--danger);animation:smDrain 1.5s infinite}
+@keyframes smDrain{0%,100%{opacity:.3}50%{opacity:1}}
 
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -429,6 +540,150 @@ html{scroll-behavior:smooth}a{color:inherit;text-decoration:none}
       <p>Already scammed? The first hour is critical. Here is exactly what to do — bank freeze, 1930 helpline, and NPCI complaint explained.</p>
       <div class="article-meta">
         <span class="read-time">📖 6 min read</span>
+        <span class="read-link">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="articles/fake-payment-screenshot.html" class="article-card reveal reveal-delay-1">
+    <div class="article-visual">
+      <div class="vis-fakescreenshot">
+        <div class="vis-fs-phone">
+          <div class="vis-fs-topbar">
+            <span class="vis-fs-logo">Ph●nePe</span>
+          </div>
+          <div class="vis-fs-body">
+            <div class="vis-fs-glitch"></div>
+            <div class="vis-fs-success">
+              <div class="vis-fs-tick">✅</div>
+              <div class="vis-fs-paid">Payment Successful</div>
+              <div class="vis-fs-amt">₹650</div>
+            </div>
+            <div class="vis-fs-fail">
+              <div class="vis-fs-x">🚫</div>
+              <div class="vis-fs-fake">EDITED SCREENSHOT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="article-card-body">
+      <div class="article-tag">Screenshot Fraud</div>
+      <h3>The Fake Payment Screenshot Scam</h3>
+      <p>The buyer shows a "Payment Successful" screenshot — but no money ever left their account. Merchants get fooled every day.</p>
+      <div class="article-meta">
+        <span class="read-time">📖 4 min read</span>
+        <span class="read-link">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="articles/sim-swap-scam.html" class="article-card reveal">
+    <div class="article-visual">
+      <div class="vis-simswap">
+        <div class="vis-sw-device">
+          <span class="vis-sw-name victim">Your SIM</span>
+          <div class="vis-sw-bars victim-bars">
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+          </div>
+          <span class="vis-sw-status no-signal">NO SIGNAL</span>
+        </div>
+        <div class="vis-sw-divider"></div>
+        <div class="vis-sw-device">
+          <span class="vis-sw-name scammer">Scammer</span>
+          <div class="vis-sw-bars scammer-bars">
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+            <div class="vis-sw-bar"></div>
+          </div>
+          <span class="vis-sw-status live">GETS YOUR OTP</span>
+        </div>
+      </div>
+    </div>
+    <div class="article-card-body">
+      <div class="article-tag">SIM Fraud</div>
+      <h3>The SIM Swap Scam</h3>
+      <p>Fraudsters convince your carrier to transfer your number to their SIM. Your phone goes dead — and your OTPs go straight to them.</p>
+      <div class="article-meta">
+        <span class="read-time">📖 5 min read</span>
+        <span class="read-link">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="articles/job-scam-upi.html" class="article-card reveal reveal-delay-1">
+    <div class="article-visual">
+      <div class="vis-jobscam">
+        <div class="vis-jb-chat">
+          <div class="vis-jb-bubble them"><span class="vis-jb-sender">@FlipkartHR_Jobs</span>Congratulations! Work-from-home selected. ₹800/day.</div>
+          <div class="vis-jb-bubble pay">Pay ₹500 registration now via UPI to activate.</div>
+          <div class="vis-jb-bubble gone">🚫 Contact unavailable</div>
+        </div>
+      </div>
+    </div>
+    <div class="article-card-body">
+      <div class="article-tag">Job Fraud</div>
+      <h3>The Fake Job UPI Scam</h3>
+      <p>Fake recruiters on Telegram offer ₹800/day work-from-home jobs — then vanish the moment you pay the "registration fee".</p>
+      <div class="article-meta">
+        <span class="read-time">📖 4 min read</span>
+        <span class="read-link">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="articles/vpa-impersonation.html" class="article-card reveal">
+    <div class="article-visual">
+      <div class="vis-vpa">
+        <div class="vis-vpa-box">
+          <div class="vis-vpa-row real">
+            <span class="vis-vpa-id"><span class="vok">amazonsupport@icici</span></span>
+            <span class="vis-vpa-tag ok">REAL</span>
+          </div>
+          <div class="vis-vpa-row fake">
+            <span class="vis-vpa-id">amaz<span class="vbad">o</span>nsupp<span class="vbad">o</span>rt@icici</span>
+            <span class="vis-vpa-tag bad">FAKE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="article-card-body">
+      <div class="article-tag">UPI ID Fraud</div>
+      <h3>The VPA Impersonation Scam</h3>
+      <p>Scammers create UPI IDs that look identical to real ones — one character off. You pay ₹4,000+ before you notice.</p>
+      <div class="article-meta">
+        <span class="read-time">📖 4 min read</span>
+        <span class="read-link">Read →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="articles/social-media-upi-scam.html" class="article-card reveal reveal-delay-1">
+    <div class="article-visual">
+      <div class="vis-socialmedia">
+        <div class="vis-sm-feed">
+          <div class="vis-sm-post">
+            <div class="vis-sm-header">
+              <div class="vis-sm-avatar">📦</div>
+              <span class="vis-sm-name">Flipkart Giveaway<span class="vis-sm-verified">✔</span></span>
+            </div>
+            <div class="vis-sm-caption">🎁 You've won an iPhone 15! Pay ₹49 shipping to claim.</div>
+            <span class="vis-sm-cta">PAY NOW →</span>
+          </div>
+          <div class="vis-sm-drain">💸 ₹849 drained 💸</div>
+        </div>
+      </div>
+    </div>
+    <div class="article-card-body">
+      <div class="article-tag">Social Media Scam</div>
+      <h3>The Social Media UPI Scam</h3>
+      <p>Fake giveaways on Instagram and Facebook ask for a small "shipping fee" via UPI. Pay once — and they'll drain everything they can.</p>
+      <div class="article-meta">
+        <span class="read-time">📖 4 min read</span>
         <span class="read-link">Read →</span>
       </div>
     </div>
