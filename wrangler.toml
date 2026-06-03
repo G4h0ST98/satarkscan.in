@@ -1,0 +1,6 @@
+name = "satarkscan-in"
+main = "worker.js"
+compatibility_date = "2026-06-03"
+
+[assets]
+directory = "."
